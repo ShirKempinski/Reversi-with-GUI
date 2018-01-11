@@ -32,10 +32,9 @@ public class Game {
 		while (size < 4 || size > 20) {
 			System.out.print("Please choose board size between 4 and 20: ");
 			size = scanIn.nextInt();
-			System.out.println();
 		}
 		this.logic = new GameLogic(new Board(size));
-		scanIn.close();
+		//scanIn.close();
 	}
 	/**
 	 * function name: play

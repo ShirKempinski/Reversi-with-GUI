@@ -26,17 +26,17 @@ public class Player {
 	 */
 	public Square chooseSquare(ArrayList<Square> possibleMoves) {
 		System.out.println();
-		System.out.println("Please enter your move, row col:");
-		int x = -1, y = -1;
-		Scanner scanIn = new Scanner(System.in);
+		System.out.print("Please enter your move, row col: ");
+		int x, y;
 		while (true) {
-			x = scanIn.nextInt();
-			y = scanIn.nextInt();
+			Scanner scanIn = new Scanner(System.in);
+			String move = scanIn.nextLine();
+			x = Integer.parseInt(move.substring(0, 1));
+			y = Integer.parseInt(move.substring(2));
 			Square playersChoice = new Square(x,y);
 			int size = possibleMoves.size();
 			for (int i = 0; i < size; i++) {
 				if (possibleMoves.get(i).equals(playersChoice)) {
-					scanIn.close();
 					return playersChoice;
 				}
 			}

@@ -213,7 +213,8 @@ public class GameLogic {
 		// check if there are possible moves
 		ArrayList<Square> moves = possibleMoves(current, opponent);
 		if (moves.isEmpty()) {
-			System.out.println("No possible moves. Play passes back to the other player.");
+			System.out.println();
+			System.out.println("No possible moves. The turn passes back to the other player.");
 			this.turns++;
 			return;
 		}
@@ -236,15 +237,27 @@ public class GameLogic {
 	 */
 	public boolean gameShouldStop(Player X, Player O) {
 		if (possibleMoves(X,O).isEmpty() && possibleMoves(O,X).isEmpty()) {
+			printBoard();
+			System.out.println();
 			System.out.println("No more possible moves for both players.");
 			return true;
 		}
 		if (this.board.isboardfull()) {
+			printBoard();
 			return true;
 		}
 		return false;
 	}
 
+	/**
+	 * function name: printBoard
+	 * input: void
+	 * output: void
+	 * operation: prints out the board.
+	 */
+	private void printBoard() {
+		this.board.print();
+	}
 
 	/**
 	 * function name: whosTurn
@@ -278,6 +291,7 @@ public class GameLogic {
 	 * operation: prints out the game result
 	 */
 	public void endGame() {
+		System.out.println();
 		System.out.print("Game is over.");
 		Winner result = this.board.whoWin();
 		if (result == Winner.O) {

@@ -52,6 +52,7 @@ public class Board {
 	 * operation: print out the board
 	 */
 	public void print() {
+		System.out.println();
 		for (int i = 0; i < this.size + 1; i++) {
 			for (int j = 0; j < this.size + 1; j++) {
 				if (i == 0) {
