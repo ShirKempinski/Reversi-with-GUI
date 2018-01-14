@@ -80,4 +80,11 @@ public class Square {
 	public char getType() {
 		return this.type;
 	}
+	
+	public boolean isEmpty() {
+		if (this.type == ' ') {
+			return true;
+		}
+		return false;
+	}
 }
