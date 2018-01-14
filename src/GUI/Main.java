@@ -3,22 +3,20 @@ package GUI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import reversiGame.Game;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			GridPane root = (GridPane)FXMLLoader.load(getClass().getResource("FXMLDemo.fxml"));
-			Scene scene = new Scene(root,400,350);
+			HBox root = (HBox) FXMLLoader.load(getClass().getResource("FXML.fxml"));
+			Scene scene	= new Scene(root, 520, 400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setTitle("Reversi FXML, Welcome!");
+			primaryStage.setTitle("Reversi");
 			Label l = new Label("click start!");
 			Button startButton = new Button("start");
 			startButton.setOnAction(event-> {

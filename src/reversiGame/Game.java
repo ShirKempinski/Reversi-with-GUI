@@ -34,7 +34,6 @@ public class Game {
 			size = scanIn.nextInt();
 		}
 		this.logic = new GameLogic(new Board(size));
-		//scanIn.close();
 	}
 	/**
 	 * function name: play
