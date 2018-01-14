@@ -162,6 +162,18 @@ public class Board {
 		return this.size;
 	}
 
+	
+	/**
+	 * function name: getSquare
+	 * input: int x, int y
+	 * output: Square
+	 * operation: returns the square in the desired location
+	 */
+	public Square getSquare(int x, int y) {
+		return this.array.get(x).get(y);
+	}
+	
+	
 	/**
 	 * function name: whoWin
 	 * input: void
