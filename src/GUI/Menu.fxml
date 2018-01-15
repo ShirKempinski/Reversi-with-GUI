@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Menu">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MenuController">
    <children>
       <GridPane>
         <columnConstraints>
@@ -20,7 +21,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <GridPane prefHeight="400.0" prefWidth="600.0">
+      <GridPane prefHeight="434.0" prefWidth="600.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="600.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="0.0" prefWidth="0.0" />
@@ -31,18 +32,37 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="42.0" prefWidth="510.0" text="     Welcome to Reversi!" textFill="#4d0647">
+            <Label prefHeight="80.0" prefWidth="527.0" text="     Welcome to Reversi!" textFill="#4d0647">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="50.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="175.0" text="Start Game" textFill="#f5f3f3" GridPane.rowIndex="1">
+            <Button fx:id="start" alignment="CENTER_RIGHT" layoutX="200.0" mnemonicParsing="false" onAction="#startReversi" prefHeight="44.0" prefWidth="175.0" text="StartGame" textFill="#f5f3f3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
          </children>
+         <GridPane.margin>
+            <Insets bottom="100.0" />
+         </GridPane.margin>
       </GridPane>
+      <Button fx:id="settings" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#settingGame" prefHeight="44.0" prefWidth="175.0" text="Settings" textAlignment="CENTER" textFill="#f5f3f3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="200.0" />
+         </GridPane.margin>
+      </Button>
+      <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="44.0" prefWidth="175.0" text="close" textAlignment="CENTER" textFill="#f5f3f3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="145.0" />
+         </GridPane.margin>
+      </Button>
    </children>
    <columnConstraints>
       <ColumnConstraints />
