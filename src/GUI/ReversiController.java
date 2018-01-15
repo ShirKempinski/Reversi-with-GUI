@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import reversiGame.Board;
+import reversiGame.Game;
 
 public class ReversiController implements Initializable {
 
@@ -35,6 +36,11 @@ public class ReversiController implements Initializable {
 			boardController.setPrefHeight(newValue.doubleValue());          
 			boardController.draw();
 		});
+		
+		Game game = new Game();
+		game.initialize();
+		game.play();
+
 	}
 
 }

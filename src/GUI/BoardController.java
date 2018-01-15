@@ -51,25 +51,13 @@ public class BoardController extends GridPane {
 		// go over the squares
 		for (int i = 0; i < this.boardSize; i++) {
 			for (int j = 0; j < this.boardSize; j++) {
-				// add each square
-				GUISquare s = this.squares.get(i).get(j);
-				this.add(s, j, i);
-				// if the square isn't empty, add it's content as a circle
-				if (!s.isEmpty()) {
-					Circle c = new Circle();
-					c.setCenterX(s.getX() + s.getWidth() / 2);
-					c.setCenterY(s.getY() + s.getHeight() / 2);
-					c.setRadius(this.getPrefHeight() / (this.boardSize * 2) - 4);
-					if (s.getType() == 'X') {
-						c.setFill(Color.BLACK);
-						c.setStroke(Color.WHITE);
-					} else {
-						c.setFill(Color.WHITE);
-						c.setStroke(Color.BLACK);
-					}
-					this.add(c, j, i);
-				}
+				// each square draws itself
+				this.squares.get(i).get(j).draw(this);
 			}
 		}
+	}
+	
+	public int getBoardSize() {
+		return this.boardSize;
 	}
 }

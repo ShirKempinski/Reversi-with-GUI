@@ -9,11 +9,11 @@ xmlns:fx="http://javafx.com/fxml/1">
 
 </fx:root>
 
-<HBox xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="GUI.BoardController" fx:id="root" spacing="10">
+<!-- <GridPane xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="GUI.ReversiController" fx:id="root" spacing="10">
 
-	<VBox spacing="10">
+	<ColumnConstrains spacing="10">
 		<Button> Start Game	</Button>
 		<Button> End Game </Button>
-	</VBox>
-</HBox>
+	</ColumnConstrains>
+/GridPane> -->
