@@ -1,5 +1,7 @@
 package GUI;
 
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import reversiGame.Square;
 
@@ -8,6 +10,24 @@ public class GUISquare extends Rectangle {
 	
 	public GUISquare(Square s) {
 		this.square = s;
+	}
+	
+	public void draw(BoardController bc) {
+		bc.add(this, this.square.getY(), this.square.getX());
+		if (!this.square.isEmpty()) {
+			Circle c = new Circle();
+			c.setCenterX(this.getX() + this.getWidth() / 2);
+			c.setCenterY(this.getY() + this.getHeight() / 2);
+			c.setRadius(bc.getPrefHeight() / (bc.getBoardSize() * 2) - 4);
+			if (this.square.getType() == 'X') {
+				c.setFill(Color.BLACK);
+				c.setStroke(Color.WHITE);
+			} else {
+				c.setFill(Color.WHITE);
+				c.setStroke(Color.BLACK);
+			}
+			bc.add(c, this.square.getY(), this.square.getX());
+		}
 	}
 	
 	public boolean isEmpty() {
