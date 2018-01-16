@@ -56,5 +56,4 @@ public class Game {
 		}
 		this.logic.endGame();
 	}
-
 }

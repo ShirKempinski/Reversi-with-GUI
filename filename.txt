@@ -1,4 +1,4 @@
- stating player: Player 1
+ first player: Player 1
  color player1: Black
  color player2: White
  board size: 4

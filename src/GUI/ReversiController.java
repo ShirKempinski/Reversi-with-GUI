@@ -15,10 +15,6 @@
 //	private	HBox root;
 //	private Board board;
 //
-//	public ReversiController() {
-//		this.board = new Board(4);
-//	}
-//
 //	@Override
 //	public void initialize(URL location, ResourceBundle resources) {
 //		ReversiBoard reversiBoard = new ReversiBoard(this.board);

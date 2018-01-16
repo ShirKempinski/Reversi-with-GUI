@@ -172,8 +172,24 @@ public class Board {
 	public Square getSquare(int x, int y) {
 		return this.array.get(x).get(y);
 	}
-	
-	
+
+	/**
+	 * function name: getScore
+	 * input: char type
+	 * output: int
+	 * operation: returns the number of times the given type occors in the board
+	 */
+	public int getScore(char type) {
+		int score = 0;
+		for (int i = 0; i < this.size; i++) {
+			for (int j = 0; j < this.size; j++) {
+				if (this.array.get(i).get(j).equals(type)) {
+					score++;
+				}
+			}
+		}
+		return score;
+	}
 	/**
 	 * function name: whoWin
 	 * input: void

@@ -36,8 +36,11 @@
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="50.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Label>
-            <Button fx:id="start" alignment="CENTER_RIGHT" layoutX="200.0" mnemonicParsing="false" onAction="#startReversi" prefHeight="44.0" prefWidth="175.0" text="StartGame" textFill="#f5f3f3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="startButton" alignment="CENTER_RIGHT" layoutX="200.0" mnemonicParsing="false" onAction="#startReversi" prefHeight="44.0" prefWidth="175.0" text="Start Game" textFill="#f5f3f3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
@@ -47,7 +50,7 @@
             <Insets bottom="100.0" />
          </GridPane.margin>
       </GridPane>
-      <Button fx:id="settings" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#settingGame" prefHeight="44.0" prefWidth="175.0" text="Settings" textAlignment="CENTER" textFill="#f5f3f3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+      <Button fx:id="settingsButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#settingGame" prefHeight="44.0" prefWidth="175.0" text="Settings" textAlignment="CENTER" textFill="#f5f3f3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <font>
             <Font size="20.0" />
          </font>
@@ -55,7 +58,7 @@
             <Insets bottom="200.0" />
          </GridPane.margin>
       </Button>
-      <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="44.0" prefWidth="175.0" text="close" textAlignment="CENTER" textFill="#f5f3f3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+      <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="44.0" prefWidth="175.0" text="Close" textAlignment="CENTER" textFill="#f5f3f3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <font>
             <Font size="20.0" />
          </font>
