@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class MenuController {
 
     @FXML
-    private  Button start;
+    private Button start;
 
     @FXML
     private Button settings;
