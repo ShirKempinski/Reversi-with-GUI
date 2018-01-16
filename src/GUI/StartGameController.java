@@ -13,24 +13,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.scene.control.Button;
+import reversiGame.Game;
 import reversiGame.GameLogic;
+import reversiGame.Player;
 
 import java.io.IOException;
 
-public class Controller implements Initializable {
+public class StartGameController implements Initializable {
 
     @FXML
     private Button endGame;
     @FXML
     private HBox root;
     private Board board;
-    private String startPlayer;
-    private String colorPlayer1;
-    private String colorPlayer2;
+    private Player player1;
+    private Player player2;
+    private GameLogic logic;
     private int boardSize;
 
 
-    public void readSettingsFromFile(GameLogic gameLogic) {
+    public void readSettingsFromFile() {
 
         String fileName = "fileName.txt";
         BufferedReader br = null;
@@ -41,7 +43,7 @@ public class Controller implements Initializable {
             br = new BufferedReader(fr);
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {
-                String[] parts = sCurrentLine.split(" : ");
+                String[] parts = sCurrentLine.split(": ");
                 settingsMap.put(parts[0], parts[1]);
             }
         } catch (IOException e) {
@@ -56,28 +58,40 @@ public class Controller implements Initializable {
                 ex.printStackTrace();
             }
         }
-        startPlayer = settingsMap.get("start Player");
-        colorPlayer1 = settingsMap.get("color player1");
-        colorPlayer2 = settingsMap.get("color player2");
+        String firstPlayer = settingsMap.get("start Player");
+        String colorPlayer1 = settingsMap.get("color player1");
+        String colorPlayer2 = settingsMap.get("color player2");
         String size = settingsMap.get("board size");
         String[] parts = size.split("x");
         boardSize = Integer.parseInt(parts[0]);
         this.board = new Board(boardSize);
-
+        this.player1 = new Player('X');
+        this.player2 = new Player('O');
+        this.logic = new GameLogic(this.board);
     }
 
     @Override
-public void initialize(URL location, ResourceBundle
-        resources) {
+    public void initialize(URL location, ResourceBundle resources) {
 
-   //     GameLogic gameLogic = new GameLogic(this.board);
-     //   this.readSettingsFromFile(gameLogic);
-//        ReversiBoard reversiBoard = new ReversiBoard(board);
-//        reversiBoard.setPrefWidth(400);
-//        reversiBoard.setPrefHeight(400);
-//        root.getChildren().add(0, reversiBoard);
-//        reversiBoard.draw();
-        }
+        this.readSettingsFromFile();
+        ReversiBoard reversiBoard = new ReversiBoard(board);
+        reversiBoard.setPrefWidth(400);
+        reversiBoard.setPrefHeight(400);
+        root.getChildren().add(0, reversiBoard);
+        reversiBoard.draw();
+
+        this.root.widthProperty().addListener((observable, oldValue, newValue) -> {
+            double boardNewWidth = newValue.doubleValue() -	120;
+            reversiBoard.setPrefWidth(boardNewWidth);
+            reversiBoard.draw();
+        });
+        this.root.heightProperty().addListener((observable, oldValue, newValue) -> {
+            reversiBoard.setPrefHeight(newValue.doubleValue());
+            reversiBoard.draw();
+        });
+
+        //play()
+    }
 
 
 

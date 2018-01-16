@@ -7,18 +7,18 @@ import javafx.stage.Stage;
 public class MenuController {
 
     @FXML
-    private  Button start;
+    private  Button startButton;
 
     @FXML
-    private Button settings;
+    private Button settingsButton;
 
     @FXML
-    private Button close;
+    private Button closeButton;
 
     @FXML
     private void startReversi() {
         StartGame startGame = new StartGame();
-        Stage stage = (Stage) start.getScene().getWindow();
+        Stage stage = (Stage) startButton.getScene().getWindow();
         try {
             startGame.start(stage);
         } catch (Exception e){
@@ -29,7 +29,7 @@ public class MenuController {
     @FXML
     protected void settingGame() {
         Settings settings = new Settings();
-        Stage stage = (Stage) start.getScene().getWindow();
+        Stage stage = (Stage) settingsButton.getScene().getWindow();
         try {
             settings.start(stage);
         } catch (Exception e){

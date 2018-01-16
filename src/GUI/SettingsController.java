@@ -13,7 +13,7 @@ import java.io.*;
 public class SettingsController {
 
     @FXML
-    private ComboBox statingPlayer;
+    private ComboBox firstPlayer;
 
     @FXML
     private ComboBox colorPlayer1;
@@ -28,7 +28,7 @@ public class SettingsController {
     private Button ok;
 
 
-    ObservableList<String> statingPlayerList =
+    ObservableList<String> firstPlayerList =
             FXCollections.observableArrayList("Player 1", "Player 2");
 
     ObservableList<String> colorPlayerList =
@@ -41,8 +41,8 @@ public class SettingsController {
 
     @FXML
     private void initialize() {
-        statingPlayer.setValue("Player 1");
-        statingPlayer.setItems(statingPlayerList);
+        firstPlayer.setValue("Player 1");
+        firstPlayer.setItems(firstPlayerList);
 
         colorPlayer1.setValue("Black");
         colorPlayer1.setItems(colorPlayerList);
@@ -56,7 +56,7 @@ public class SettingsController {
 
     @FXML
     protected void end() {
-        String StringOpenPlayer = statingPlayer.getValue().toString();
+        String StringfirstPlayer = firstPlayer.getValue().toString();
         String StringPlayer1Color = colorPlayer1.getValue().toString();
         String StringPlayer2Color = colorPlayer2.getValue().toString();
         String StringBoardSize = boardSize.getValue().toString();
@@ -66,7 +66,7 @@ public class SettingsController {
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream("filename.txt"), "utf-8"));
-            writer.write(" stating player: " + StringOpenPlayer + "\n");
+            writer.write(" first player: " + StringfirstPlayer + "\n");
             writer.write(" color player1: " + StringPlayer1Color + "\n");
             writer.write(" color player2: " + StringPlayer2Color + "\n");
             writer.write(" board size: " + StringBoardSize + "\n");
