@@ -1,30 +1,33 @@
-package GUI;
-
-import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Circle;
-import reversiGame.Player;
-
-import javax.swing.text.html.ImageView;
-import java.awt.*;
-
-public class GUI_Player {
-
-    private Player player;
-    private GridPane grid;
-    private Color color;
-
-    public GUI_Player(Player p, GridPane grid, Color color){
-    this.color = color;
-    this.player = p;
-    this.grid = grid;
-
-    }
-    public void draw(int cellWidth, int cellHeight) {
-
-//        new Circle( 5 , 6 , 7.5,(this.color));
-//        //setColor(this.color);
-//        surface.fillCircle((int) this.getX(), (int) this.getY(), r);
-//        grid.getChildren().remove(iv);
-//        grid.add(iv, col, row);
-    }
-}
+//package GUI;
+//
+//import javafx.scene.layout.GridPane;
+//import javafx.scene.shape.Circle;
+//import reversiGame.Player;
+//import javafx.scene.paint.Color;
+//import javafx.scene.shape.Circle;
+//import reversiGame.Square;
+//
+//
+//import javax.swing.text.html.ImageView;
+//import java.awt.*;
+//import java.util.ArrayList;
+//
+//public class GUI_Player {
+//
+//    private Player player;
+//    private GridPane grid;
+//    private Color color;
+//    private Square square;
+//
+//    public GUI_Player(Player p, GridPane grid, Color color, Square square){
+//    this.square = square;
+//    this.color = color;
+//    this.player = p;
+//    this.grid = grid;
+//    }
+//
+//    public void draw(int cellWidth, int cellHeight) {
+//       this.grid.add(new Circle( 5 , 5 , 5,(this.color)) ,square.getX(), square.getY());
+//
+//    }
+//}
