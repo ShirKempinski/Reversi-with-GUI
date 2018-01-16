@@ -21,20 +21,20 @@ public class ReversiController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		BoardController boardController	= new BoardController(this.board);
-		boardController.setPrefWidth(400);
-		boardController.setPrefHeight(400);
-		this.root.getChildren().add(0, boardController);         
-		boardController.draw();
+		ReversiBoard reversiBoard = new ReversiBoard(this.board);
+		reversiBoard.setPrefWidth(400);
+		reversiBoard.setPrefHeight(400);
+		this.root.getChildren().add(0, reversiBoard);
+		reversiBoard.draw();
 		
 		this.root.widthProperty().addListener((observable, oldValue, newValue) -> {           
 			double boardNewWidth = newValue.doubleValue() -	120;
-			boardController.setPrefWidth(boardNewWidth);          
-			boardController.draw();
+			reversiBoard.setPrefWidth(boardNewWidth);
+			reversiBoard.draw();
 		});  
 		this.root.heightProperty().addListener((observable, oldValue, newValue) -> {          
-			boardController.setPrefHeight(newValue.doubleValue());          
-			boardController.draw();
+			reversiBoard.setPrefHeight(newValue.doubleValue());
+			reversiBoard.draw();
 		});
 		
 		Game game = new Game();

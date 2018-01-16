@@ -4,23 +4,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Cell;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import reversiGame.Board;
+import reversiGame.Player;
 
-public class BoardController extends GridPane {
+public class ReversiBoard extends GridPane {
 	private Board board;
 	private ArrayList<ArrayList<GUISquare>> squares;
 	private int boardSize;
+	private final int prefHeight = 400;
+	private final int prefWidth = 400;
+	private Player player1;
+	private Player player2;
 
-	public BoardController(Board b) {
+	public ReversiBoard(Board b) {
 		this.board = b;
 		this.boardSize = this.board.getSize();
-		
+
 		int squareHeight = (int)this.getPrefHeight() / boardSize;
 		int squareWidth = (int)this.getPrefWidth() / boardSize;
-		
+
 		for (int i = 0; i < boardSize; i++) {
 			ArrayList<GUISquare> list = new ArrayList<GUISquare>();
 			for (int j = 0; j < boardSize; j++) {
@@ -34,7 +41,7 @@ public class BoardController extends GridPane {
 			}
 			this.squares.add(list);
 		}
-		
+
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GUIBoard.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
@@ -44,19 +51,35 @@ public class BoardController extends GridPane {
 			throw new RuntimeException(exception);
 		}
 	}
-	
+
 	public void draw() {
 		// clear all that was on screen
 		this.getChildren().clear();
+		int height = (int)this.getPrefHeight();
+		int width = (int)this.getPrefWidth();
+		int cellHeight = height / board.getSize();
+		int cellWidth = width / board.getSize();
+
 		// go over the squares
-		for (int i = 0; i < this.boardSize; i++) {
-			for (int j = 0; j < this.boardSize; j++) {
-				// each square draws itself
-				this.squares.get(i).get(j).draw(this);
+		for (int i = 0; i <  board.getSize(); i++) {
+			for (int j = 0; j <  board.getSize(); j++) {
+					this.add(new Rectangle(cellWidth, cellHeight, Color.WHITE), j, i);
+			}
+		}
+
+
+		for (int i = 0; i <  board.getSize(); i++) {
+			for (int j = 0; j < board.getSize(); j++) {
+				if (board.getType(i, j) == 'X') {
+				//	player1.draw(cellWidth, cellHeight, i, j, this);
+				}
+			else if (board.getType(i, j) == 'O') {
+				//	player2.draw(cellWidth, cellHeight, i, j, this);
+				}
 			}
 		}
 	}
-	
+
 	public int getBoardSize() {
 		return this.boardSize;
 	}

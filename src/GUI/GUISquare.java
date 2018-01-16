@@ -12,7 +12,7 @@ public class GUISquare extends Rectangle {
 		this.square = s;
 	}
 	
-	public void draw(BoardController bc) {
+	public void draw(ReversiBoard bc) {
 		bc.add(this, this.square.getY(), this.square.getX());
 		if (!this.square.isEmpty()) {
 			Circle c = new Circle();
