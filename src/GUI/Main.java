@@ -26,9 +26,9 @@ public class Main extends Application {
 			startButton.setOnAction(event-> {
 				l.setText("Button clicked!");
 			});
-			root.getChildren().add(startButton);
-			root.getChildren().add(l);
-			root.getChildren().add(this.grid);
+			//root.getChildren().add(startButton);
+			//root.getChildren().add(l);
+			//root.getChildren().add(this.grid);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
