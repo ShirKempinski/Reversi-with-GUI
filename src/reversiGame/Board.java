@@ -6,7 +6,7 @@ public class Board {
 	public enum Winner {X, O, tie}
 
 	private	int size;
-	private	ArrayList<ArrayList<Square>> array;
+	private	Square[][] array;
 
 	/**
 	 * function name: Board
@@ -16,19 +16,19 @@ public class Board {
 	 */
 	public Board(int s) {
 		this.size = s;
-		this.array = new ArrayList<ArrayList<Square>>();
-		for (int i = 0; i < this.size; i++) {
-			ArrayList<Square> line = new ArrayList<Square>();
-			for (int j = 0; j < this.size; j++) {
-				line.add(new Square(i, j));
-			}
-			this.array.add(line);
-		}
+		//this.array = new ArrayList<ArrayList<Square>>();
+//		for (int i = 0; i < this.size; i++) {
+//			ArrayList<Square> line = new ArrayList<Square>();
+//			for (int j = 0; j < this.size; j++) {
+//				line.add(new Square(i, j));
+//			}
+//			this.array.add(line);
+//		}
 
-		this.array.get(this.size/2 -1).get(this.size/2 -1).setType('O');
-		this.array.get(this.size/2).get(this.size/2).setType('O');
-		this.array.get(this.size/2 -1).get(this.size/2).setType('X');
-		this.array.get(this.size/2).get(this.size/2 -1).setType('X');
+		this.array[this.size/2 -1][this.size/2 -1].setType('O');
+		this.array[this.size/2][this.size/2].setType('O');
+		this.array[this.size/2 -1][this.size/2].setType('X');
+		this.array[this.size/2][this.size/2 -1].setType('X');
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class Board {
 				} else if (j == 0) {
 					System.out.print(i + "|");
 				} else {
-					System.out.print(" " + this.array.get(i - 1).get(j - 1).getType() + " |");
+					System.out.print(" " + this.array[i - 1][j - 1].getType() + " |");
 				}
 				if (j == this.size) {
 					System.out.println();
@@ -84,136 +84,137 @@ public class Board {
 	 * output: ArrayList<ArrayList<Square>>
 	 * operation: returns the board's array
 	 */
-	public ArrayList<ArrayList<Square>> getArray() {
-		return this.array;
-	}
+	//public ArrayList<ArrayList<Square>> getArray() {}
+        //return this.array;
+        //}
 
-	/**
-	 * function name: isEmpty
-	 * input: x and y indexes of the board's array
-	 * output: boolean
-	 * operation: checks if the given location is empty
-	 */
-	public boolean isEmpty(int x, int y){
-		if (this.array.get(x).get(y).getType() == ' ') {
-			return true;
-		}
-		return false;
-	}
+        /**
+         * function name: isEmpty
+         * input: x and y indexes of the board's array
+         * output: boolean
+         * operation: checks if the given location is empty
+         */
+//	public boolean isEmpty(int x, int y){
+//		if (this.array[x][y].getType() == ' ') {
+//			return true;
+//		}
+//		return false;
+//	}
 
-	/**
-	 * function name: isOutOfBounderies
-	 * input: x and y indexes
-	 * output: boolean
-	 * operation: checks if the given location is out of the array's boundaries
-	 */
-	public boolean isOutOfBounderies(int x, int y){
-		if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
-			return true;
-		}
-		return false;
-	}
+        /**
+         * function name: isOutOfBounderies
+         * input: x and y indexes
+         * output: boolean
+         * operation: checks if the given location is out of the array's boundaries
+         */
+//	public boolean isOutOfBounderies(int x, int y){
+//		if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
+//			return true;
+//		}
+//		return false;
+//	}
 
-	/**
-	 * function name: get type
-	 * input: x and y indexes
-	 * output: char
-	 * operation: returns the state of the given location in the array
-	 */
-	public char getType(int x, int y) {
-		return this.array.get(x).get(y).getType();
-	}
+        /**
+         * function name: get type
+         * input: x and y indexes
+         * output: char
+         * operation: returns the state of the given location in the array
+         */
+//	public char getType(int x, int y) {
+//		return this.array[x][y].getType();
+//	}
 
-	/**
-	 * function name: set type
-	 * input: x and y indexes, char type
-	 * output: void
-	 * operation: set the state of the given location in the array to the desired type
-	 */
-	public void setType(int x, int y, char type) {
-		this.array.get(x).get(y).setType(type);
-	}
-	
-	
-	/**
-	 * function name: isBoardFull
-	 * input: void
-	 * output: boolean
-	 * operation: checks if the board is full
-	 */
-	public boolean isboardfull() {
-		for (int i = 0; i < this.size; i++) {
-			for (int j = 0; j < this.size; j++) {
-				if (isEmpty(i, j)) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
+        /**
+         * function name: set type
+         * input: x and y indexes, char type
+         * output: void
+         * operation: set the state of the given location in the array to the desired type
+         */
+        //public void setType(int x, int y, char type) {
+        //	this.array.get(x).get(y).setType(type);
+        //}
 
-	/**
-	 * function name: getSize
-	 * input: void
-	 * output: int
-	 * operation: returns the board's size
-	 */
-	public int getSize() {
-		return this.size;
-	}
 
-	
-	/**
-	 * function name: getSquare
-	 * input: int x, int y
-	 * output: Square
-	 * operation: returns the square in the desired location
-	 */
-	public Square getSquare(int x, int y) {
-		return this.array.get(x).get(y);
-	}
+        /**
+         * function name: isBoardFull
+         * input: void
+         * output: boolean
+         * operation: checks if the board is full
+         */
+//	public boolean isboardfull() {
+//		for (int i = 0; i < this.size; i++) {
+//			for (int j = 0; j < this.size; j++) {
+//				if (isEmpty(i, j)) {
+//					return false;
+//				}
+//			}
+//		}
+//		return true;
+//	}
 
-	/**
-	 * function name: getScore
-	 * input: char type
-	 * output: int
-	 * operation: returns the number of times the given type occors in the board
-	 */
-	public int getScore(char type) {
-		int score = 0;
-		for (int i = 0; i < this.size; i++) {
-			for (int j = 0; j < this.size; j++) {
-				if (this.array.get(i).get(j).equals(type)) {
-					score++;
-				}
-			}
-		}
-		return score;
-	}
-	/**
-	 * function name: whoWin
-	 * input: void
-	 * output: Winner
-	 * operation: checks who won - X, O or it's a tie.
-	 */
-	public Winner whoWin() {
-		int x = 0;
-		int o = 0;
-		for (int i = 0; i < this.size; i++) {
-			for (int j = 0; j < this.size; j++) {
-				if (this.array.get(i).get(j).equals('X')) {
-					x++;
-				} else if (this.array.get(i).get(j).equals('O')) {
-					o++;
-				}
-			}
-		}
-		if (x > o) {
-			return Winner.X;
-		} else if (o > x) {
-			return Winner.O;
-		} else {
-			return Winner.tie;
-		}
-	}
+        /**
+         * function name: getSize
+         * input: void
+         * output: int
+         * operation: returns the board's size
+         */
+//	public int getSize() {
+//		return this.size;
+//	}
+
+
+        /**
+         * function name: getSquare
+         * input: int x, int y
+         * output: Square
+         * operation: returns the square in the desired location
+         */
+        //public Square getSquare(int x, int y) {
+        //	return this.array.get(x).get(y);
+        //}
+
+        /**
+         * function name: getScore
+         * input: char type
+         * output: int
+         * operation: returns the number of times the given type occors in the board
+         */
+//	public int getScore(char type) {
+//		int score = 0;
+//		for (int i = 0; i < this.size; i++) {
+//			for (int j = 0; j < this.size; j++) {
+//			//	if (this.array.get(i).get(j).equals(type)) {
+//					score++;
+//			//	}
+//			}
+//		}
+//		return score;
+//	}
+        /**
+         * function name: whoWin
+         * input: void
+         * output: Winner
+         //	 * operation: checks who won - X, O or it's a tie.
+         //	 */
+//	public Winner whoWin() {
+//		int x = 0;
+//		int o = 0;
+//		for (int i = 0; i < this.size; i++) {
+//			for (int j = 0; j < this.size; j++) {
+//	//			if (this.array.get(i).get(j).equals('X')) {
+//					x++;
+//	//			} else if (this.array.get(i).get(j).equals('O')) {
+//					o++;
+//				}
+//			}
+//	//	}
+//		if (x > o) {
+//			return Winner.X;
+//		} else if (o > x) {
+//			return Winner.O;
+//		} else {
+//			return Winner.tie;
+//		}
+//	}
+//}
 }
