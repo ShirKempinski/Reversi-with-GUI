@@ -183,7 +183,7 @@ public class Board {
 			int score = 0;
 			for (int i = 0; i < this.size; i++) {
 				for (int j = 0; j < this.size; j++) {
-					if (this.array.get(i).get(j).equals(type)) {
+					if (this.array.get(i).get(j).getType() == type){
 						score++;
 					}
 				}
