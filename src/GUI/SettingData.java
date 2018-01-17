@@ -42,19 +42,19 @@ public class SettingData {
                 ex.printStackTrace();
             }
         }
-        String order = settingsMap.get("start Player");
+        String order = settingsMap.get(" first player");
         String[] parts = order.split(" ");
         firstPlayer = Integer.parseInt(parts[1]);
         
-        String colorPlayer1 = settingsMap.get("color player1");
+        String colorPlayer1 = settingsMap.get(" color player1");
         player1Color = Color.valueOf(colorPlayer1);
 
-        String colorPlayer2 = settingsMap.get("color player2");
+        String colorPlayer2 = settingsMap.get(" color player2");
         player2Color = Color.valueOf(colorPlayer2);
         
-        String size = settingsMap.get("board size");
+        String size = settingsMap.get(" board size");
         String[] sizeParts = size.split("x");
-        boardSize = Integer.parseInt(parts[0]);
+        boardSize = Integer.parseInt(parts[1]);
     }
 	
 	public static int getBoardSize() {
