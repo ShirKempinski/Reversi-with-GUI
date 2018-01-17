@@ -131,10 +131,10 @@ public class ReversiController implements Initializable {
 			this.opponentPlayer = tmp;
 		}
 		
-		Integer score = new Integer(this.board.getScore(this.player1.getType()));
-		this.scores1Value.setText(score.toString());
-		score = new Integer(this.board.getScore(this.player2.getType()));
-		this.scores2Value.setText(score.toString());
+	int score = this.board.getScore(this.player1.getType());
+        this.scores1Value.setText(""+score);
+        score = this.board.getScore(this.player2.getType());
+        this.scores2Value.setText(""+score);
 	}
 	
     public void backToMain() {
