@@ -105,10 +105,10 @@ public class ReversiController implements Initializable {
 		if (!isValidMove(move)) {
 			illeagalMove.setText("Illeagal Move!");
 			this.reversiBoard.draw();
-			illeagalMove.setText("");
 			return;
 		}
 		// make the move
+		illeagalMove.setText("");
 		this.logic.turnDisks(currentPlayer, opponentPlayer, move);
 		updatePlayers();
 		
