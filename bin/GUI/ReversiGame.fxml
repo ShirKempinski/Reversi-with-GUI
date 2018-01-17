@@ -78,7 +78,7 @@
                         <Insets right="20.0" />
                      </GridPane.margin>
                   </Button>
-                  <Text fx:id="illeagalMove" strokeType="OUTSIDE" strokeWidth="0.0" text="Illeagal Move!" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Text fx:id="illeagalMove" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="40.0" />
                      </GridPane.margin>

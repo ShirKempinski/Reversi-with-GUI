@@ -80,7 +80,7 @@ public class ReversiController implements Initializable {
 		scores2Value.setText("0");
 		current.setText("Current player:");
 		currentValue.setText(currentPlayer.toString());
-		illeagalMove.setVisible(false);
+		illeagalMove.setText("");
 		
 		// initialize the reversiBoard
 		this.reversiBoard.setPrefWidth(400);
