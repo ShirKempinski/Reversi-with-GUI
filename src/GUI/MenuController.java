@@ -49,12 +49,6 @@ public class MenuController {
         	System.out.println(e.getMessage());
         }
     }
-    
-    @FXML
-    public void closeReversi() {
-    	Stage stage = (Stage) settingsButton.getScene().getWindow();
-    	stage.close();
-    }
 
     @FXML
     protected void closeReversi() {
