@@ -147,8 +147,8 @@ public class GameLogic {
 	 * operation: turns the disks in all the valid directions around the given move.
 	 */
 	public void turnDisks(Player current, Player opponent, Square move) {
-		int x = move.getX()-1;
-		int y = move.getY()-1;
+		int x = move.getX();
+		int y = move.getY();
 		// check upper left
 		if (flipInRightDirection(current, opponent, x-1, y-1, -1, -1)) {
 			this.board.setType(x, y, current.getType());
@@ -181,6 +181,9 @@ public class GameLogic {
 		if (flipInRightDirection(current, opponent, x+1, y+1, 1, 1)) {
 			this.board.setType(x, y, current.getType());
 		}
+		
+		// update turn
+		this.turns++;
 	}
 
 
@@ -225,8 +228,7 @@ public class GameLogic {
 		Square nextMove = current.chooseSquare(moves);
 		// make the move
 		turnDisks(current, opponent, nextMove);
-		// update turn
-		this.turns++;
+	
 	}
 
 

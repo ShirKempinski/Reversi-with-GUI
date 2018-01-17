@@ -110,12 +110,12 @@ public class ReversiController implements Initializable {
 		}
 		// make the move
 		this.logic.turnDisks(currentPlayer, opponentPlayer, move);
-		setTurns();
+		updatePlayers();
+		
 		
 		// if the game is over, alert
 		if (this.logic.gameShouldStop(currentPlayer, opponentPlayer)) {
-			illeagalMove.setText("Game Over!" + "/n" + "The Winner is " + this.board.whoWin());
-		} else {
+ 		} else {
 			this.reversiBoard.draw();
 		}
 	}
@@ -124,12 +124,17 @@ public class ReversiController implements Initializable {
 		return this.logic.isPossibleMove(move.getX(), move.getY(), this.currentPlayer, this.opponentPlayer);
 	}
 	
-	public void setTurns() {
+	public void updatePlayers() {
 		if (!(this.currentPlayer == this.logic.whosTurn(currentPlayer, opponentPlayer))) {
 			Player tmp = this.currentPlayer;
 			this.currentPlayer = this.opponentPlayer;
 			this.opponentPlayer = tmp;
 		}
+		
+		Integer score = new Integer(this.board.getScore(this.player1.getType()));
+		this.scores1Value.setText(score.toString());
+		score = new Integer(this.board.getScore(this.player2.getType()));
+		this.scores2Value.setText(score.toString());
 	}
 	
     public void backToMain() {
