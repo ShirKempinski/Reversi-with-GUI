@@ -104,7 +104,7 @@ public class ReversiController implements Initializable {
 		System.out.println("play " + move.getX() + "," + move.getY());
 	}
 	
-    public void endGame() {
+    public void backToMain() {
         Menu menu = new Menu();
         try {
             menu.start((Stage) backToMain.getScene().getWindow());
