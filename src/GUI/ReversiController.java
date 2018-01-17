@@ -75,9 +75,9 @@ public class ReversiController implements Initializable {
 		// initialize fxml privates
 		reversiBoard = new ReversiBoard(this.board, new SquareListener(this));
 		scoresPlayer1.setText("Player 1 scores:");
-		scores1Value.setText("0");
+		scores1Value.setText("2");
 		scoresPlayer2.setText("Player 2 scores:");
-		scores2Value.setText("0");
+		scores2Value.setText("2");
 		current.setText("Current player:");
 		currentValue.setText(currentPlayer.toString());
 		illeagalMove.setText("");
