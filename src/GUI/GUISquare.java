@@ -12,28 +12,29 @@ public class GUISquare extends BorderPane {
 	private GridPane grid;
 	private SquareListener listener;
 	private int boardSize;
-	private int edgeSize;
 
-	public GUISquare(ReversiBoard gc, Square s, SquareListener listener, int boardSize, int edgeSize) {
+	public GUISquare(ReversiBoard gc, Square s, SquareListener listener, int boardSize) {
 		this.square = s;
 		this.grid = gc;
 		this.listener = listener;
 		this.boardSize = boardSize;
 	}
 
-	public void draw() {
+	public void draw(int edgeSize) {
 		// draw the rectangle
-		Rectangle rectangle = new Rectangle(this.edgeSize, this.edgeSize);
+		Rectangle rectangle = new Rectangle(edgeSize, edgeSize);
 		rectangle.setFill(Color.rgb(255, 255, 204));
 		rectangle.setStroke(Color.rgb(85, 31, 85));
+		this.setCenter(rectangle);
 		this.grid.add(this, this.square.getY(), this.square.getX());
 
 		// if there's a disk on this square, draw it
 		if (!this.square.isEmpty()) {
+			BorderPane borderPane = new BorderPane();
 			Circle c = new Circle();
-			c.setCenterX(rectangle.getX() + this.edgeSize / 2);
-			c.setCenterY(rectangle.getY() + this.edgeSize / 2);
-			c.setRadius(this.grid.getPrefHeight() / (this.boardSize * 2) - 4);
+			//c.setCenterX(rectangle.getX() + edgeSize / 2);
+			//c.setCenterY(rectangle.getY() + edgeSize / 2);
+			c.setRadius(edgeSize / 2.0 - 4);
 			if (this.square.getType() == 'X') {
 				c.setFill(SettingData.getPlayer1Color());
 				c.setStroke(Color.WHITE);
@@ -41,7 +42,8 @@ public class GUISquare extends BorderPane {
 				c.setFill(SettingData.getPlayer2Color());
 				c.setStroke(Color.BLACK);
 			}
-			this.grid.add(c, this.square.getY(), this.square.getX());
+			borderPane.setCenter(c);
+			this.grid.add(borderPane, this.square.getY(), this.square.getX());
 		}
 		// set the listener
 		this.setOnMouseClicked(event -> {this.listener.clickEvent(this.square);});

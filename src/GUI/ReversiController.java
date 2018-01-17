@@ -16,9 +16,8 @@ import reversiGame.Player;
 import reversiGame.Square;
 
 public class ReversiController implements Initializable {
-
 	@FXML
-	private	HBox root;
+	private HBox root;
 	
 	@FXML
 	private Text scoresPlayer1;
@@ -44,9 +43,7 @@ public class ReversiController implements Initializable {
 	@FXML
 	private Button backToMain;
 	
-	@FXML
 	private ReversiBoard reversiBoard;
-
 	private Board board;
 	private Player player1;
 	private Player player2;
