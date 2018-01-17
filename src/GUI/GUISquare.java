@@ -1,35 +1,50 @@
 package GUI;
 
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import reversiGame.Square;
 
-public class GUISquare extends Rectangle {
+public class GUISquare extends BorderPane {
 	private Square square;
+	private GridPane grid;
+	private SquareListener listener;
+	private int boardSize;
+	private int edgeSize;
 
-	public GUISquare(Square s) {
+	public GUISquare(ReversiBoard gc, Square s, SquareListener listener, int boardSize, int edgeSize) {
 		this.square = s;
-		this.setFill(Color.rgb(255, 255, 204));
-		this.setStroke(Color.rgb(85, 31, 85));
+		this.grid = gc;
+		this.listener = listener;
+		this.boardSize = boardSize;
 	}
 
-	public void draw(ReversiBoard bc) {
-		bc.add(this, this.square.getY(), this.square.getX());
+	public void draw() {
+		// draw the rectangle
+		Rectangle rectangle = new Rectangle(this.edgeSize, this.edgeSize);
+		rectangle.setFill(Color.rgb(255, 255, 204));
+		rectangle.setStroke(Color.rgb(85, 31, 85));
+		this.grid.add(this, this.square.getY(), this.square.getX());
+
+		// if there's a disk on this square, draw it
 		if (!this.square.isEmpty()) {
 			Circle c = new Circle();
-			c.setCenterX(this.getX() + this.getWidth() / 2);
-			c.setCenterY(this.getY() + this.getHeight() / 2);
-			c.setRadius(bc.getPrefHeight() / (bc.getBoardSize() * 2) - 4);
+			c.setCenterX(rectangle.getX() + this.edgeSize / 2);
+			c.setCenterY(rectangle.getY() + this.edgeSize / 2);
+			c.setRadius(this.grid.getPrefHeight() / (this.boardSize * 2) - 4);
 			if (this.square.getType() == 'X') {
-				c.setFill(Color.BLACK);
+				c.setFill(SettingData.getPlayer1Color());
 				c.setStroke(Color.WHITE);
 			} else {
-				c.setFill(Color.WHITE);
+				c.setFill(SettingData.getPlayer2Color());
 				c.setStroke(Color.BLACK);
 			}
-			bc.add(c, this.square.getY(), this.square.getX());
+			this.grid.add(c, this.square.getY(), this.square.getX());
 		}
+		// set the listener
+		this.setOnMouseClicked(event -> {this.listener.clickEvent(this.square)});
 	}
 
 	public boolean isEmpty() {

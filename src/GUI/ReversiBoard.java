@@ -1,71 +1,40 @@
 package GUI;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Cell;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
+
 import reversiGame.Board;
 
 public class ReversiBoard extends GridPane {
 	private Board board;
-	private ArrayList<ArrayList<GUISquare>> squares;
 	private int boardSize;
-	private final int prefHeight = 400;
-	private final int prefWidth = 400;
+	private GUISquare[][] squares;
+	private SquareListener listener;
 
 
-	public ReversiBoard(Board b) {
+	public ReversiBoard(Board b, SquareListener l) {
 		this.board = b;
 		this.boardSize = this.board.getSize();
+		this.listener = l;
 
-		int squareHeight = (int)this.getPrefHeight() / boardSize;
-		int squareWidth = (int)this.getPrefWidth() / boardSize;
-
+		int squareEdge = (int) this.getHeight() / this.boardSize;
 		for (int i = 0; i < boardSize; i++) {
-			ArrayList<GUISquare> list = new ArrayList<GUISquare>();
 			for (int j = 0; j < boardSize; j++) {
-				GUISquare s = new GUISquare(this.board.getSquare(i, j));
+				this.squares[i][j] = new GUISquare(this, this.board.getSquare(i, j), this.listener,
+						this.boardSize, squareEdge);
 //				s.setFill(Color.rgb(200, 162, 200));
-				s.setWidth(squareWidth);
-				s.setHeight(squareHeight);
-				//s.setOnMouseClicked();
-				list.add(s);
 			}
-			this.squares.add(list);
-		}
-
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GUIBoard.fxml"));
-		fxmlLoader.setRoot(this);
-		fxmlLoader.setController(this);
-		try {
-			fxmlLoader.load();
-		} catch (IOException exception) {
-			throw new RuntimeException(exception);
 		}
 	}
 
 	public void draw() {
 		// clear all that was on screen
 		this.getChildren().clear();
-		int height = (int)this.getPrefHeight();
-		int width = (int)this.getPrefWidth();
-		int cellHeight = height / board.getSize();
-		int cellWidth = width / board.getSize();
 
 		// go over the squares
 		for (int i = 0; i <  this.boardSize; i++) {
 			for (int j = 0; j <  this.boardSize; j++) {
-					this.squares.get(i).get(j).draw(this);
+					this.squares[i][j].draw();
 			}
 		}
-	}
-
-	public int getBoardSize() {
-		return this.boardSize;
 	}
 }

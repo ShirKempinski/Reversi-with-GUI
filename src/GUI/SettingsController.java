@@ -12,78 +12,80 @@ import java.io.*;
 
 public class SettingsController {
 
-    @FXML
-    private ComboBox firstPlayer;
+	@FXML
+	private ComboBox firstPlayer;
 
-    @FXML
-    private ComboBox colorPlayer1;
+	@FXML
+	private ComboBox colorPlayer1;
 
-    @FXML
-    private ComboBox colorPlayer2;
+	@FXML
+	private ComboBox colorPlayer2;
 
-    @FXML
-    private ComboBox boardSize;
+	@FXML
+	private ComboBox boardSize;
 
-    @FXML
-    private Button ok;
-
-
-    ObservableList<String> firstPlayerList =
-            FXCollections.observableArrayList("Player 1", "Player 2");
-
-    ObservableList<String> colorPlayerList =
-            FXCollections.observableArrayList("Black", "White", "purple", "Blue", "Green", "Yellow", "orange",
-                    "Red");
-
-    ObservableList<String> boardSizeList =
-            FXCollections.observableArrayList("4", "6", "8", "10", "12", "14", "16", "18", "20");
+	@FXML
+	private Button ok;
 
 
-    @FXML
-    private void initialize() {
-        firstPlayer.setValue("Player 1");
-        firstPlayer.setItems(firstPlayerList);
+	ObservableList<String> firstPlayerList =
+			FXCollections.observableArrayList("Player 1", "Player 2");
 
-        colorPlayer1.setValue("Black");
-        colorPlayer1.setItems(colorPlayerList);
+	ObservableList<String> colorPlayerList =
+			FXCollections.observableArrayList("Black", "White", "purple", "Blue", "Green", "Yellow", "orange",
+					"Red");
 
-        colorPlayer2.setValue("White");
-        colorPlayer2.setItems(colorPlayerList);
+	ObservableList<String> boardSizeList =
+			FXCollections.observableArrayList("4", "6", "8", "10", "12", "14", "16", "18", "20");
 
-        boardSize.setValue("8");
-        boardSize.setItems(boardSizeList);
-    }
 
-    @FXML
-    protected void end() {
-        String StringfirstPlayer = firstPlayer.getValue().toString();
-        String StringPlayer1Color = colorPlayer1.getValue().toString();
-        String StringPlayer2Color = colorPlayer2.getValue().toString();
-        String StringBoardSize = boardSize.getValue().toString();
+	@FXML
+	private void initialize() {
+		firstPlayer.setValue("Player 1");
+		firstPlayer.setItems(firstPlayerList);
 
-        Writer writer = null;
+		colorPlayer1.setValue("Black");
+		colorPlayer1.setItems(colorPlayerList);
 
-        try {
-            writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("filename.txt"), "utf-8"));
-            writer.write(" first player: " + StringfirstPlayer + "\n");
-            writer.write(" color player1: " + StringPlayer1Color + "\n");
-            writer.write(" color player2: " + StringPlayer2Color + "\n");
-            writer.write(" board size: " + StringBoardSize + "\n");
+		colorPlayer2.setValue("White");
+		colorPlayer2.setItems(colorPlayerList);
 
-        } catch (IOException ex) {
+		boardSize.setValue("8");
+		boardSize.setItems(boardSizeList);
+	}
 
-        } finally {
-            try {writer.close();} catch (Exception ex) {/*ignore*/}
-        }
+	@FXML
+	protected void end() {
+		String StringfirstPlayer = firstPlayer.getValue().toString();
+		String StringPlayer1Color = colorPlayer1.getValue().toString();
+		String StringPlayer2Color = colorPlayer2.getValue().toString();
+		String StringBoardSize = boardSize.getValue().toString();
 
-        Menu menu = new Menu();
-        try {
-            menu.start((Stage)ok.getScene().getWindow());
-        } catch (Exception e) {
+		Writer writer = null;
 
-        }
+		try {
+			writer = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream("filename.txt"), "utf-8"));
+			writer.write(" first player: " + StringfirstPlayer + "\n");
+			writer.write(" color player1: " + StringPlayer1Color + "\n");
+			writer.write(" color player2: " + StringPlayer2Color + "\n");
+			writer.write(" board size: " + StringBoardSize + "\n");
 
-    }
+		} catch (IOException ex) {
+
+		} finally {
+			try {
+				writer.close();
+			} catch (Exception ex) {/*ignore*/}
+		}
+
+		Menu menu = new Menu();
+		try {
+			menu.start((Stage)ok.getScene().getWindow());
+		} catch (Exception e) {
+
+		}
+
+	}
 
 }

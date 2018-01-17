@@ -8,8 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.StartGameController">
-   <children>
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReversiController">
+<!--
+<children>
       <GridPane prefHeight="408.0" prefWidth="610.0">
         <columnConstraints>
           <ColumnConstraints />
@@ -39,4 +40,5 @@
    <rowConstraints>
       <RowConstraints />
    </rowConstraints>
+ -->
 </GridPane>
