@@ -25,9 +25,9 @@ public class MenuController {
         ReversiController rc = new ReversiController();
         
         try {
-            GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("StartGame.fxml"));
+            GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("ReversiGame.fxml"));
             Scene scene = new Scene(root, 600, 450);
-            scene.getStylesheets().add(getClass().getResource("StartGame.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("ReversiGame.css").toExternalForm());
             stage.setTitle("Reversi");
             stage.setScene(scene);
             stage.show();
