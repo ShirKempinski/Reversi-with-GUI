@@ -44,7 +44,7 @@ public class GUISquare extends BorderPane {
 			this.grid.add(c, this.square.getY(), this.square.getX());
 		}
 		// set the listener
-		this.setOnMouseClicked(event -> {this.listener.clickEvent(this.square)});
+		this.setOnMouseClicked(event -> {this.listener.clickEvent(this.square);});
 	}
 
 	public boolean isEmpty() {
@@ -78,7 +78,7 @@ public class GUISquare extends BorderPane {
 	 * operation: checks if the given square is equal to this square
 	 */
 	public boolean equals(GUISquare other) {
-		if (other.getX() == this.square.getX() && other.getY() == this.square.getY()) {
+		if (other.getI() == this.square.getX() && other.getJ() == this.square.getY()) {
 			return true;
 		}
 		return false;

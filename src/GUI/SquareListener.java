@@ -11,7 +11,7 @@ public class SquareListener {
 	}
 	
 	public void clickEvent(Square s) {
-		rc.playOneTurn(s.getX(), s.getY());
+		rc.playOneTurn(s);
 	}
 	
 }

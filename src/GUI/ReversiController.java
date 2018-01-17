@@ -24,13 +24,19 @@ public class ReversiController implements Initializable {
 	private Text scoresPlayer1;
 	
 	@FXML
-	private Text scores1;
+	private Text scores1Value;
 	
 	@FXML
 	private Text scoresPlayer2;
 	
 	@FXML
-	private Text scores2;
+	private Text scores2Value;
+	
+	@FXML
+	private Text current;
+	
+	@FXML
+	private Text currentValue;
 	
 	@FXML
 	private Text illeagalMove;
@@ -38,6 +44,9 @@ public class ReversiController implements Initializable {
 	@FXML
 	private Button backToMain;
 	
+	@FXML
+	private ReversiBoard reversiBoard;
+
 	private Board board;
 	private Player player1;
 	private Player player2;
@@ -45,7 +54,6 @@ public class ReversiController implements Initializable {
 	private Color color1;
 	private Color color2;
 	private GameLogic logic;
-	private ReversiBoard reversiBoard;
 
 	
 	public ReversiController() {
@@ -60,16 +68,18 @@ public class ReversiController implements Initializable {
 		this.color2 = SettingData.getPlayer2Color();
 		this.board = new Board(SettingData.getBoardSize());
 		this.logic = new GameLogic(this.board);
-		this.reversiBoard = new ReversiBoard(this.board, new SquareListener(this));
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// initialize fxml privates
+		reversiBoard = new ReversiBoard(this.board, new SquareListener(this));
 		scoresPlayer1.setText("Player 1 scores:");
-		scores1.setText("0");
+		scores1Value.setText("0");
 		scoresPlayer2.setText("Player 2 scores:");
-		scores2.setText("0");
+		scores2Value.setText("0");
+		current.setText("Current player:");
+		currentValue.setText(currentPlayer.toString());
 		illeagalMove.setVisible(false);
 		
 		// initialize the reversiBoard

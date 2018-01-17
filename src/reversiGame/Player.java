@@ -67,5 +67,19 @@ public class Player {
 		}
 		return false;
 	}
+	
+	/**
+	 * function name: toString
+	 * input: void
+	 * output: String
+	 * operation: returns a string that represent the player
+	 */
+	public String toString() {
+		if (this.type == 'X') {
+			return "Player 1";
+		} else {
+			return "Player 2";
+		}
+	}
 
 }

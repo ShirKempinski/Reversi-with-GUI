@@ -18,12 +18,12 @@ public class SettingData {
 	private static int firstPlayer;
 		
 	public static void readSettingsFromFile() {
-        String fileName = "fileName.txt";
-        BufferedReader br = null;
+        String fileName = "filename.txt";
         FileReader fr = null;
+        BufferedReader br = null;
         Map<String, String> settingsMap = new HashMap<String, String>();
         try {
-            fr = new FileReader(fileName);
+        	fr = new FileReader(fileName);
             br = new BufferedReader(fr);
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {
@@ -42,9 +42,13 @@ public class SettingData {
                 ex.printStackTrace();
             }
         }
-        String order = settingsMap.get("start Player");
-        String[] parts = order.split(" ");
-        firstPlayer = Integer.parseInt(parts[1]);
+        boolean exist = settingsMap.containsKey("first player");
+        String order = settingsMap.get("first player");
+        if (order.equals("Player 1")) {
+        	firstPlayer = 1;
+        } else {
+        	firstPlayer = 2;
+        }
         
         String colorPlayer1 = settingsMap.get("color player1");
         player1Color = Color.valueOf(colorPlayer1);
@@ -54,7 +58,7 @@ public class SettingData {
         
         String size = settingsMap.get("board size");
         String[] sizeParts = size.split("x");
-        boardSize = Integer.parseInt(parts[0]);
+        boardSize = Integer.parseInt(sizeParts[0]);
     }
 	
 	public static int getBoardSize() {

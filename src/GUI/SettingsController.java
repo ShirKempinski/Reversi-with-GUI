@@ -66,10 +66,10 @@ public class SettingsController {
 		try {
 			writer = new BufferedWriter(new OutputStreamWriter(
 					new FileOutputStream("filename.txt"), "utf-8"));
-			writer.write(" first player: " + StringfirstPlayer + "\n");
-			writer.write(" color player1: " + StringPlayer1Color + "\n");
-			writer.write(" color player2: " + StringPlayer2Color + "\n");
-			writer.write(" board size: " + StringBoardSize + "\n");
+			writer.write("first player: " + StringfirstPlayer + "\n");
+			writer.write("color player1: " + StringPlayer1Color + "\n");
+			writer.write("color player2: " + StringPlayer2Color + "\n");
+			writer.write("board size: " + StringBoardSize + "\n");
 
 		} catch (IOException ex) {
 
