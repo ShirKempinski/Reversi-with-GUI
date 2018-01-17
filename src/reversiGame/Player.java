@@ -62,7 +62,7 @@ public class Player {
 	 * operation: checks if the other player equals to this player.
 	 */
 	public boolean equals(Player other) {
-		if (this.type == other.type) {
+		if (this.type == other.getType()) {
 			return true;
 		}
 		return false;

@@ -27,7 +27,7 @@ public class GameLogic {
 	 * output: a vector of the possible moves (squares)
 	 * operation: get all the current player's possible moves
 	 */
-	ArrayList<Square> possibleMoves(Player current, Player opponent){
+	public ArrayList<Square> getPossibleMoves(Player current, Player opponent){
 		ArrayList<Square> moves = new ArrayList<Square>();
 		int size = this.board.getSize();
 		// go over the board
@@ -119,9 +119,9 @@ public class GameLogic {
 	 * output: boolean
 	 * operation: recursive function that flips the cells in a certain location, if valid.
 	 */
-	public boolean flipInRightDirection(Player current, Player opponent, int x, int y, int dx, int dy) {
+	public boolean flipInRightDirection(Player current, Player opponent, int x, int y, int dx, int dy, int length) {
 		// if this cell is out of boundaries or empty
-		if (this.board.isOutOfBounderies(x, y) || this.board.isEmpty(x, y)) {
+		if (this.board.isOutOfBounderies(x, y) || this.board.isEmpty(x, y) || (this.board.getType(x,y) == current.getType() && length == 0)) {
 			return false;
 		}
 		// if we've reached our own cell
@@ -130,7 +130,7 @@ public class GameLogic {
 			return true;
 		}
 		// if this direction is good - it's the opponent's cell
-		if (flipInRightDirection(current, opponent, x+dx, y+dy, dx, dy)) {
+		if (flipInRightDirection(current, opponent, x+dx, y+dy, dx, dy, length+1)) {
 			// flip the disk
 			this.board.setType(x, y, current.getType());
 			return true;
@@ -149,41 +149,48 @@ public class GameLogic {
 	public void turnDisks(Player current, Player opponent, Square move) {
 		int x = move.getX();
 		int y = move.getY();
+		
+		
+		this.board.print();
+		
+		
 		// check upper left
-		if (flipInRightDirection(current, opponent, x-1, y-1, -1, -1)) {
+		if (flipInRightDirection(current, opponent, x-1, y-1, -1, -1, 0)) {
 			this.board.setType(x, y, current.getType());
 		}
 		// check upper mid
-		if (flipInRightDirection(current, opponent, x-1, y, -1, 0)) {
+		if (flipInRightDirection(current, opponent, x-1, y, -1, 0, 0)) {
 			this.board.setType(x, y, current.getType());
 		}
 		// check upper right
-		if (flipInRightDirection(current, opponent, x-1, y+1, -1, 1)) {
+		if (flipInRightDirection(current, opponent, x-1, y+1, -1, 1, 0)) {
 			this.board.setType(x, y, current.getType());
 		}
 		// check mid left
-		if (flipInRightDirection(current, opponent, x, y-1, 0, -1)) {
+		if (flipInRightDirection(current, opponent, x, y-1, 0, -1, 0)) {
 			this.board.setType(x, y, current.getType());
 		}
 		// check mid right
-		if (flipInRightDirection(current, opponent, x, y+1, 0, 1)) {
+		if (flipInRightDirection(current, opponent, x, y+1, 0, 1, 0)) {
 			this.board.setType(x, y, current.getType());
 		}
 		// check lower left
-		if (flipInRightDirection(current, opponent, x+1, y-1, 1, -1)) {
+		if (flipInRightDirection(current, opponent, x+1, y-1, 1, -1, 0)) {
 			this.board.setType(x, y, current.getType());
 		}
 		// check lower mid
-		if (flipInRightDirection(current, opponent, x+1, y, 1, 0)) {
+		if (flipInRightDirection(current, opponent, x+1, y, 1, 0, 0)) {
 			this.board.setType(x, y, current.getType());
 		}
 		// check mid right
-		if (flipInRightDirection(current, opponent, x+1, y+1, 1, 1)) {
+		if (flipInRightDirection(current, opponent, x+1, y+1, 1, 1, 0)) {
 			this.board.setType(x, y, current.getType());
 		}
+
 		
-		// update turn
-		this.turns++;
+		this.board.print();
+		
+
 	}
 
 
@@ -215,7 +222,7 @@ public class GameLogic {
 		this.board.print();
 		System.out.print(current.getType() + ": It's youre move. ");
 		// check if there are possible moves
-		ArrayList<Square> moves = possibleMoves(current, opponent);
+		ArrayList<Square> moves = getPossibleMoves(current, opponent);
 		if (moves.isEmpty()) {
 			System.out.println();
 			System.out.println("No possible moves. The turn passes back to the other player.");
@@ -239,7 +246,7 @@ public class GameLogic {
 	 * operation: check if the board is full or if both players can't make any more moves
 	 */
 	public boolean gameShouldStop(Player X, Player O) {
-		if (possibleMoves(X,O).isEmpty() && possibleMoves(O,X).isEmpty()) {
+		if (getPossibleMoves(X,O).isEmpty() && getPossibleMoves(O,X).isEmpty()) {
 			printBoard();
 			System.out.println();
 			System.out.println("No more possible moves for both players.");
@@ -285,6 +292,16 @@ public class GameLogic {
 		if (this.board.isboardfull()) {
 			return GameOver.FullBoard;
 		} return GameOver.NoMoreMoves;
+	}
+
+	/**
+	 * function name: updateTurns
+	 * input: void
+	 * output: void
+	 * operation: promote turns by one.
+	 */
+	public void updateTurns() {
+		this.turns++;
 	}
 
 //	/**

@@ -102,21 +102,27 @@ public class ReversiController implements Initializable {
 	
 	public void playOneTurn(Square move) {
 		// validate the move
-		if (!isValidMove(move)) {
-			illeagalMove.setText("Illeagal Move!");
-			this.reversiBoard.draw();
-			return;
+		if (isValidMove(move)) {
+			illeagalMove.setText("");
+			this.logic.turnDisks(currentPlayer, opponentPlayer, move);
+			updatePlayers();
 		}
-		// make the move
-		illeagalMove.setText("");
-		this.logic.turnDisks(currentPlayer, opponentPlayer, move);
-		updatePlayers();
-		
-		// if the game is over, alert
+		// if the game is over
 		if (this.logic.gameShouldStop(currentPlayer, opponentPlayer)) {
- 		} else {
-			this.reversiBoard.draw();
+			//message.set("Game Over");
+			
+		// if this player has no possible moves
+		} else if (this.logic.getPossibleMoves(this.currentPlayer, this.opponentPlayer).isEmpty()) {
+			// setText: "No possible moves. The turn passes back to the other player."
+			updatePlayers();
+				
+		// if this move is invalid
+		} else if (!isValidMove(move)) {
+			illeagalMove.setText("Illeagal Move!");
 		}
+		
+		// draw the board
+		this.reversiBoard.draw();		
 	}
 	
 	public boolean isValidMove(Square move) {
@@ -124,12 +130,12 @@ public class ReversiController implements Initializable {
 	}
 	
 	public void updatePlayers() {
-		if (!(this.currentPlayer == this.logic.whosTurn(currentPlayer, opponentPlayer))) {
-			Player tmp = this.currentPlayer;
-			this.currentPlayer = this.opponentPlayer;
-			this.opponentPlayer = tmp;
-		}
-		
+		// update the turns
+		Player tmp = this.currentPlayer;
+		this.currentPlayer = this.opponentPlayer;
+		this.opponentPlayer = tmp;
+				
+		// update the scores
 		Integer score = new Integer(this.board.getScore(this.player1.getType()));
 		this.scores1Value.setText(score.toString());
 		score = new Integer(this.board.getScore(this.player2.getType()));
