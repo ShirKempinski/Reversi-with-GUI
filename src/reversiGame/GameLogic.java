@@ -285,22 +285,22 @@ public class GameLogic {
 		} return GameOver.NoMoreMoves;
 	}
 
-	/**
-	 * function name: endGame
-	 * input: void
-	 * output: void
-	 * operation: prints out the game result
-	 */
-	public void endGame() {
-		System.out.println();
-		System.out.print("Game is over.");
-		Winner result = this.board.whoWin();
-		if (result == Winner.O) {
-			System.out.println(" O wins.");
-		} else if (result == Winner.X) {
-			System.out.println(" X wins.");
-		} else {
-			System.out.println(" No one wins - it's a tie.");
-		}
-	}
+//	/**
+//	 * function name: endGame
+//	 * input: void
+//	 * output: void
+//	 * operation: prints out the game result
+//	 */
+//	public void endGame() {
+//		System.out.println();
+//		System.out.print("Game is over.");
+//		Winner result = this.board.whoWin();
+//		if (result == Winner.O) {
+//			System.out.println(" O wins.");
+//		} else if (result == Winner.X) {
+//			System.out.println(" X wins.");
+//		} else {
+//			System.out.println(" No one wins - it's a tie.");
+//		}
+//	}
 }

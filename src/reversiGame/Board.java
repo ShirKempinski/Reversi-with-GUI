@@ -194,9 +194,9 @@ public class Board {
 	 * function name: whoWin
 	 * input: void
 	 * output: Winner
-         //	 * operation: checks who won - X, O or it's a tie.
-         //	 */
-	public Winner whoWin() {
+   	 * operation: checks who won - X, O or it's a tie.
+   	 */
+	public String whoWin() {
 		int x = 0;
 		int o = 0;
 		for (int i = 0; i < this.size; i++) {
@@ -209,11 +209,11 @@ public class Board {
 			}
 		}
 		if (x > o) {
-			return Winner.X;
+			return "Player 1";
 		} else if (o > x) {
-			return Winner.O;
+			return "Player 2";
 		} else {
-			return Winner.tie;
+			return "It's a Tie";
 		}
 	}
 }

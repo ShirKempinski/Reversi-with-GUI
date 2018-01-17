@@ -48,6 +48,7 @@ public class ReversiController implements Initializable {
 	private Player player1;
 	private Player player2;
 	private Player currentPlayer;
+	private Player opponentPlayer;
 	private Color color1;
 	private Color color2;
 	private GameLogic logic;
@@ -58,8 +59,10 @@ public class ReversiController implements Initializable {
 		this.player2 = new Player('O');
 		if (SettingData.getFirstPlayer() == 1) {
 			this.currentPlayer = this.player1;
+			this.opponentPlayer = this.player2;
 		} else {
 			this.currentPlayer = this.player2;
+			this.opponentPlayer = this.player1;
 		}
 		this.color1 = SettingData.getPlayer1Color();
 		this.color2 = SettingData.getPlayer2Color();
@@ -98,7 +101,35 @@ public class ReversiController implements Initializable {
 	}
 	
 	public void playOneTurn(Square move) {
-		System.out.println("play " + move.getX() + "," + move.getY());
+		// validate the move
+		if (!isValidMove(move)) {
+			illeagalMove.setText("Illeagal Move!");
+			this.reversiBoard.draw();
+			illeagalMove.setText("");
+			return;
+		}
+		// make the move
+		this.logic.turnDisks(currentPlayer, opponentPlayer, move);
+		setTurns();
+		
+		// if the game is over, alert
+		if (this.logic.gameShouldStop(currentPlayer, opponentPlayer)) {
+			illeagalMove.setText("Game Over!" + "/n" + "The Winner is " + this.board.whoWin());
+		} else {
+			this.reversiBoard.draw();
+		}
+	}
+	
+	public boolean isValidMove(Square move) {
+		return this.logic.isPossibleMove(move.getX(), move.getY(), this.currentPlayer, this.opponentPlayer);
+	}
+	
+	public void setTurns() {
+		if (!(this.currentPlayer == this.logic.whosTurn(currentPlayer, opponentPlayer))) {
+			Player tmp = this.currentPlayer;
+			this.currentPlayer = this.opponentPlayer;
+			this.opponentPlayer = tmp;
+		}
 	}
 	
     public void backToMain() {

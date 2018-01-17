@@ -1,4 +1,4 @@
-first player: Player 2
-color player1: Yellow
-color player2: Blue
+first player: Player 1
+color player1: Black
+color player2: purple
 board size: 8
