@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javafx.scene.paint.Color;
-import reversiGame.Board;
-import reversiGame.GameLogic;
 
 public class SettingData {
 	
@@ -42,7 +40,6 @@ public class SettingData {
                 ex.printStackTrace();
             }
         }
-        boolean exist = settingsMap.containsKey("first player");
         String order = settingsMap.get("first player");
         if (order.equals("Player 1")) {
         	firstPlayer = 1;

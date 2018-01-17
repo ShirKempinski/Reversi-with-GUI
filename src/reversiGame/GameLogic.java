@@ -151,7 +151,7 @@ public class GameLogic {
 		int y = move.getY()-1;
 		// check upper left
 		if (flipInRightDirection(current, opponent, x-1, y-1, -1, -1)) {
-			this.board.setType(x, y, current.getType());		
+			this.board.setType(x, y, current.getType());
 		}
 		// check upper mid
 		if (flipInRightDirection(current, opponent, x-1, y, -1, 0)) {

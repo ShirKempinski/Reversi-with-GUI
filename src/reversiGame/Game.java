@@ -1,7 +1,6 @@
 package reversiGame;
 
 import java.util.Scanner;
-
 public class Game {
 
 	private	GameLogic logic;

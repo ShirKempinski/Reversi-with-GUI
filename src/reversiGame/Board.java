@@ -15,14 +15,14 @@ public class Board {
 	 * operation: constructor
 	 */
 	public Board(int s) {
-		this.size = s;
 		this.array = new ArrayList<ArrayList<Square>>();
+		this.size = s;
 		for (int i = 0; i < this.size; i++) {
-			ArrayList<Square> line = new ArrayList<Square>();
+			ArrayList<Square> l = new ArrayList<Square>();
 			for (int j = 0; j < this.size; j++) {
-				line.add(new Square(i, j));
+				l.add(new Square(i, j));
 			}
-			this.array.add(line);
+			this.array.add(l);
 		}
 
 		this.array.get(this.size/2 -1).get(this.size/2 -1).setType('O');
@@ -68,7 +68,7 @@ public class Board {
 				} else if (j == 0) {
 					System.out.print(i + "|");
 				} else {
-					System.out.print(" " + this.array.get(i - 1).get(j - 1).getType() + " |");
+					System.out.print(" " + this.array.get(i-1).get(j-1).getType() + " |");
 				}
 				if (j == this.size) {
 					System.out.println();
@@ -133,8 +133,8 @@ public class Board {
 	public void setType(int x, int y, char type) {
 		this.array.get(x).get(y).setType(type);
 	}
-	
-	
+
+
 	/**
 	 * function name: isBoardFull
 	 * input: void
@@ -158,11 +158,11 @@ public class Board {
 	 * output: int
 	 * operation: returns the board's size
 	 */
-	public int getSize() {
-		return this.size;
-	}
+		public int getSize() {
+			return this.size;
+		}
 
-	
+
 	/**
 	 * function name: getSquare
 	 * input: int x, int y
@@ -179,23 +179,23 @@ public class Board {
 	 * output: int
 	 * operation: returns the number of times the given type occors in the board
 	 */
-	public int getScore(char type) {
-		int score = 0;
-		for (int i = 0; i < this.size; i++) {
-			for (int j = 0; j < this.size; j++) {
-				if (this.array.get(i).get(j).equals(type)) {
-					score++;
+		public int getScore(char type) {
+			int score = 0;
+			for (int i = 0; i < this.size; i++) {
+				for (int j = 0; j < this.size; j++) {
+					if (this.array.get(i).get(j).equals(type)) {
+						score++;
+					}
 				}
 			}
+			return score;
 		}
-		return score;
-	}
 	/**
 	 * function name: whoWin
 	 * input: void
 	 * output: Winner
-	 * operation: checks who won - X, O or it's a tie.
-	 */
+         //	 * operation: checks who won - X, O or it's a tie.
+         //	 */
 	public Winner whoWin() {
 		int x = 0;
 		int o = 0;
