@@ -137,10 +137,10 @@ public class ReversiController implements Initializable {
 				
 		// update the scores
 		int score = this.board.getScore(this.player1.getType());
-        this.scores1Value.setText(""+score);
+        scores1Value.setText(""+score);
         score = this.board.getScore(this.player2.getType());
-        this.scores2Value.setText(""+score);
-		currentValue.setText(currentPlayer.toString());
+        scores2Value.setText(""+score);
+		currentValue.setText(this.currentPlayer.toString());
 	}
 	
     public void backToMain() {
