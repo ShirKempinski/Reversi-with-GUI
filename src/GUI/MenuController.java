@@ -50,4 +50,10 @@ public class MenuController {
         }
     }
 
+    @FXML
+    protected void closeReversi() {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
+
 }
