@@ -46,8 +46,14 @@ public class MenuController {
         try {
             settings.start(stage);
         } catch (Exception e){
-
+        	System.out.println(e.getMessage());
         }
+    }
+    
+    @FXML
+    public void closeReversi() {
+    	Stage stage = (Stage) settingsButton.getScene().getWindow();
+    	stage.close();
     }
 
 }
