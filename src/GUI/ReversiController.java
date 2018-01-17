@@ -38,7 +38,7 @@ public class ReversiController implements Initializable {
 	private Text currentValue;
 	
 	@FXML
-	private Text illeagalMove;
+	private Text message;
 	
 	@FXML
 	private Button backToMain;
@@ -80,7 +80,7 @@ public class ReversiController implements Initializable {
 		scores2Value.setText("2");
 		current.setText("Current player:");
 		currentValue.setText(currentPlayer.toString());
-		illeagalMove.setText("");
+		message.setText("");
 		
 		// initialize the reversiBoard
 		this.reversiBoard.setPrefWidth(400);
@@ -103,22 +103,22 @@ public class ReversiController implements Initializable {
 	public void playOneTurn(Square move) {
 		// validate the move
 		if (isValidMove(move)) {
-			illeagalMove.setText("");
+			message.setText("");
 			this.logic.turnDisks(currentPlayer, opponentPlayer, move);
 			updatePlayers();
 		}
 		// if the game is over
 		if (this.logic.gameShouldStop(currentPlayer, opponentPlayer)) {
-			//message.set("Game Over");
+			message.setText("Game Over");
 			
 		// if this player has no possible moves
 		} else if (this.logic.getPossibleMoves(this.currentPlayer, this.opponentPlayer).isEmpty()) {
-			// setText: "No possible moves. The turn passes back to the other player."
+			message.setText("No possible moves. The turn passes back to the other player.");
 			updatePlayers();
 				
 		// if this move is invalid
 		} else if (!isValidMove(move)) {
-			illeagalMove.setText("Illeagal Move!");
+			message.setText("Illeagal Move!");
 		}
 		
 		// draw the board
@@ -137,10 +137,10 @@ public class ReversiController implements Initializable {
 				
 		// update the scores
 		int score = this.board.getScore(this.player1.getType());
-        scores1Value.setText(""+score);
+        this.scores1Value.setText(""+score);
         score = this.board.getScore(this.player2.getType());
-        scores2Value.setText(""+score);
-		currentValue.setText(this.currentPlayer.toString());
+        this.scores2Value.setText(""+score);
+		currentValue.setText(currentPlayer.toString());
 	}
 	
     public void backToMain() {
