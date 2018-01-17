@@ -112,7 +112,6 @@ public class ReversiController implements Initializable {
 		this.logic.turnDisks(currentPlayer, opponentPlayer, move);
 		updatePlayers();
 		
-		
 		// if the game is over, alert
 		if (this.logic.gameShouldStop(currentPlayer, opponentPlayer)) {
  		} else {
