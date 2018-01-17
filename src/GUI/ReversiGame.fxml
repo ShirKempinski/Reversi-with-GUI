@@ -15,7 +15,7 @@
          <children>
             <Text fx:id="illeagalMove" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
                <font>
-                  <Font name="System Bold Italic" size="35.0" />
+                  <Font name="System Bold Italic" size="18.0" />
                </font></Text>
             <Text fx:id="scoresPlayer1" fill="#290c51" strokeType="OUTSIDE" strokeWidth="0.0" text="Scores Player 1:" wrappingWidth="142.837890625">
                <VBox.margin>
