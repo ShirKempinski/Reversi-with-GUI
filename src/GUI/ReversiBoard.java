@@ -20,8 +20,7 @@ public class ReversiBoard extends GridPane {
 		this.squares = new GUISquare[boardSize][boardSize];
 		for (int i = 0; i < boardSize; i++) {
 			for (int j = 0; j < boardSize; j++) {
-				this.squares[i][j] = new GUISquare(this, this.board.getSquare(i, j), this.listener,
-						this.boardSize);
+				this.squares[i][j] = new GUISquare(this, this.board.getSquare(i, j), this.listener);
 //				s.setFill(Color.rgb(200, 162, 200));
 			}
 		}

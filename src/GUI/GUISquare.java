@@ -11,13 +11,11 @@ public class GUISquare extends BorderPane {
 	private Square square;
 	private GridPane grid;
 	private SquareListener listener;
-	private int boardSize;
 
-	public GUISquare(ReversiBoard gc, Square s, SquareListener listener, int boardSize) {
+	public GUISquare(ReversiBoard gc, Square s, SquareListener listener) {
 		this.square = s;
 		this.grid = gc;
 		this.listener = listener;
-		this.boardSize = boardSize;
 	}
 
 	public void draw(int edgeSize) {
@@ -32,8 +30,6 @@ public class GUISquare extends BorderPane {
 		if (!this.square.isEmpty()) {
 			BorderPane borderPane = new BorderPane();
 			Circle c = new Circle();
-			//c.setCenterX(rectangle.getX() + edgeSize / 2);
-			//c.setCenterY(rectangle.getY() + edgeSize / 2);
 			c.setRadius(edgeSize / 2.0 - 4);
 			if (this.square.getType() == 'X') {
 				c.setFill(SettingData.getPlayer1Color());
