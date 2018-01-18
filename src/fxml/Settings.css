@@ -1,5 +1,5 @@
 .root {
-    -fx-background-image: url("settingbackground.jpg")
+    -fx-background-image: url("../GUI/settingbackground.jpg")
 }
 .button {
     -fx-alignment: center;

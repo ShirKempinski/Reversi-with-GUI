@@ -26,11 +26,12 @@ public class MenuController {
         ReversiController rc = new ReversiController();
         
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ReversiGame.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation((getClass().getResource("../fxml/ReversiGame.fxml")));
             loader.setController(rc);
             HBox root = (HBox) loader.load();
             Scene scene = new Scene(root, 600, 450);
-            scene.getStylesheets().add(getClass().getResource("ReversiGame.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("../fxml/ReversiGame.css").toExternalForm());
             stage.setTitle("Reversi");
             stage.setScene(scene);
             stage.show();
