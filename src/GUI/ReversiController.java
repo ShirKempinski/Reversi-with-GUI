@@ -149,10 +149,24 @@ public class ReversiController implements Initializable {
 		this.reversiBoard.draw();		
 	}
 	
+	
+	/**
+	 * function name: isValidMove
+	 * input: Square move
+	 * output:  boolean
+	 * operation: The function returns true or false if the move the player has played is valid.
+	 */
 	public boolean isValidMove(Square move) {
 		return this.logic.isPossibleMove(move.getX(), move.getY(), this.currentPlayer, this.opponentPlayer);
 	}
 	
+	
+	/**
+	 * function name: updatePlayers
+	 * input: void
+	 * output:  void
+	 * operation: The function updates the scores of the players and the player whose turn is to play.
+	 */
 	public void updatePlayers() {
 		// update the turns
 		Player tmp = this.currentPlayer;
@@ -167,12 +181,18 @@ public class ReversiController implements Initializable {
 		currentValue.setText(currentPlayer.toString());
 	}
 	
-    public void backToMain() {
-        Menu menu = new Menu();
-        try {
-            menu.start((Stage) backToMain.getScene().getWindow());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	/**
+	 * function name: backToMain
+	 * input: void
+	 * output:  void
+	 * operation: The function back To Menu
+	 */
+   	 public void backToMain() {
+        	Menu menu = new Menu();
+        	try {
+            	menu.start((Stage) backToMain.getScene().getWindow());
+       		 } catch (Exception e) {
+        	    e.printStackTrace();
+        	}
+    	}
 }
