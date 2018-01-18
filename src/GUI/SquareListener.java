@@ -14,4 +14,7 @@ public class SquareListener {
 		rc.playOneTurn(s);
 	}
 	
+	public void hoverEvent(GUISquare s) {
+		s.setHover();
+	}
 }

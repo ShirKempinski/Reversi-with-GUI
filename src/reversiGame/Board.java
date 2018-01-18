@@ -213,7 +213,7 @@ public class Board {
 		} else if (o > x) {
 			return "Player 2";
 		} else {
-			return "It's a Tie";
+			return "Both of you!";
 		}
 	}
 }
