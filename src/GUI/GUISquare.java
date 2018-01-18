@@ -30,14 +30,12 @@ public class GUISquare extends BorderPane {
 				rectangle.setFill(Color.rgb(247, 204, 157));
 			} else {
 				rectangle.setFill(Color.rgb(255, 255, 204));
-				this.entered = false;
 			}
 		} else {
 			if (this.entered) {
 				rectangle.setFill(Color.rgb(170, 100, 170));
 			} else {
 				rectangle.setFill(Color.rgb(200, 162, 200));
-				this.entered = false;
 			}
 		}
 		rectangle.setStroke(Color.rgb(85, 31, 85));
@@ -61,8 +59,8 @@ public class GUISquare extends BorderPane {
 		}
 		// set the listener
 		this.setOnMouseClicked(event -> {this.listener.clickEvent(this.square);});
-		this.setOnMouseEntered(event -> {this.listener.hoverEvent(this);});
-		this.setOnMouseExited(event -> {this.listener.hoverEvent(this);});
+//		this.setOnMouseEntered(event -> {this.listener.hoverEvent(this);});
+//		this.setOnMouseExited(event -> {this.listener.hoverEvent(this);});
 	}
 
 	public boolean isEmpty() {
