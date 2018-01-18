@@ -12,7 +12,7 @@ public class Settings extends Application {
 	 * function name: start
 	 * input: Stage primaryStage
 	 * output: void
-	 * operation: The function starts to run a new game screen.
+	 * operation: start a new setting window.
 	 */
     public void start(Stage primaryStage) {
         try {
@@ -21,7 +21,6 @@ public class Settings extends Application {
         	SettingsController sc = new SettingsController();
         	loader.setController(sc);
         	GridPane root = (GridPane) loader.load();
-//          GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("../fxml/Settings.fxml"));
             Scene scene = new Scene(root, 600, 450);
             scene.getStylesheets().add(getClass().getResource("../fxml/Settings.css").toExternalForm());
             primaryStage.setTitle("Settings Game");
@@ -36,7 +35,7 @@ public class Settings extends Application {
 	 * function name: main
 	 * input: String[] args
 	 * output: void
-	 * operation: The function starts to run a settings screen.
+	 * operation: run the settings screen.
 	 */
     public static void main(String[] args) {
         launch(args);

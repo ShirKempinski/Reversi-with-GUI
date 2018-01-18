@@ -17,6 +17,12 @@ public class GUISquare extends BorderPane {
 	private ArrayList<Square> possibleMoves;
 	private int edgeSize;
 
+	/**
+	 * function name: GUISquare
+	 * input: ReversiBoard, Square, SquareListener
+	 * output: new object of GUISquare
+	 * operation: constructor
+	 */
 	public GUISquare(ReversiBoard rb, Square s, SquareListener listener) {
 		this.square = s;
 		this.rBoard = rb;
@@ -24,6 +30,13 @@ public class GUISquare extends BorderPane {
 		this.entered = false;
 	}
 
+	
+	/**
+	 * function name: draw
+	 * input: int, ArrayList<Square>
+	 * output: void
+	 * operation: draw the GUISquare
+	 */
 	public void draw(int edgeSize, ArrayList<Square> possibleMoves) {
 		this.edgeSize = edgeSize;
 		this.possibleMoves = possibleMoves;
@@ -70,47 +83,29 @@ public class GUISquare extends BorderPane {
 //		}
 	}
 
+	
+	/**
+	 * function name: isEmpty
+	 * input: void
+	 * output: void
+	 * operation: check if the inner square has a disk
+	 */
 	public boolean isEmpty() {
 		return this.square.isEmpty();
 	}
 
+	
+	/**
+	 * function name: setHover
+	 * input: void
+	 * output: void
+	 * operation: update private entered and draw the square
+	 */
 	public void setHover() {
 		this.entered = !this.entered;
 		draw(this.edgeSize, this.possibleMoves);
 	}
 
-	/**
-	 * function name: getI
-	 * input: void
-	 * output: the square's x value
-	 * operation: return the square's x value
-	 */
-//	public int getI() {
-//		return this.square.getX();
-//	}
-
-	/**
-	 * function name: getJ
-	 * input: void
-	 * output: the square's y value
-	 * operation: return the square's y value
-	 */
-	public int getJ() {
-		return this.square.getY();
-	}
-
-	/**
-	 * function name: equals
-	 * input: Square
-	 * output: boolean
-	 * operation: checks if the given square is equal to this square
-	 */
-//	public boolean equals(GUISquare other) {
-//		if (other.getI() == this.square.getX() && other.getJ() == this.square.getY()) {
-//			return true;
-//		}
-//		return false;
-//	}
 
 	/**
 	 * function name: setType
@@ -132,6 +127,13 @@ public class GUISquare extends BorderPane {
 		return this.square.getType();
 	}
 
+	
+	/**
+	 * function name: getSquare()
+	 * input: void
+	 * output: Square
+	 * operation: returns the inner square
+	 */
 	public Square getSquare() {
 		return this.square;
 	}

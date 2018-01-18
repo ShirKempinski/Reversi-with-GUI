@@ -18,7 +18,6 @@ public class Menu extends Application {
             	loader.setLocation((getClass().getResource("../fxml/Menu.fxml")));
             	loader.setController(new MenuController());
             	GridPane root = (GridPane) loader.load();
-                //GridPane root = (GridPane) FXMLLoader.load(getClass().getClassLoader().getResource("src/fxml/Menu.fxml"));
                 Scene scene = new Scene(root,600,450);
                 scene.getStylesheets().add(getClass().getResource("../fxml/Menu.css").toExternalForm());
                 primaryStage.setTitle("Reversi Game");

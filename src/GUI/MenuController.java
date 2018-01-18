@@ -19,12 +19,17 @@ public class MenuController {
     @FXML
     private Button closeButton;
 
+    /**
+	 * function name: startReversi
+	 * input: void
+	 * output: void
+	 * operation: start a new game
+	 */
     @FXML
     private void startReversi() {
         Stage stage = (Stage) startButton.getScene().getWindow();
         SettingData.readSettingsFromFile();
         ReversiController rc = new ReversiController();
-        
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation((getClass().getResource("../fxml/ReversiGame.fxml")));
@@ -40,6 +45,13 @@ public class MenuController {
         }
     }
 
+    
+    /**
+	 * function name: settingGame
+	 * input: void
+	 * output: void
+	 * operation: open setting window
+	 */
     @FXML
     protected void settingGame() {
         Settings settings = new Settings();
@@ -51,6 +63,13 @@ public class MenuController {
         }
     }
 
+    
+    /**
+	 * function name: closeReversi
+	 * input: void
+	 * output: void
+	 * operation: close the window
+	 */
     @FXML
     protected void closeReversi() {
         Stage stage = (Stage) closeButton.getScene().getWindow();

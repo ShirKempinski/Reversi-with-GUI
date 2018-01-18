@@ -20,7 +20,7 @@ public class SettingData {
 	 * function name: readSettingsFromFile
 	 * input: void
 	 * output: void
-	 * operation: the function read settings data from file.
+	 * operation: read the settings data from a file.
 	 */
 	public static void readSettingsFromFile() {
         String fileName = "filename.txt";
@@ -31,6 +31,7 @@ public class SettingData {
         	fr = new FileReader(fileName);
             br = new BufferedReader(fr);
             String sCurrentLine;
+            // read each line of the file, split it and put it in the map.
             while ((sCurrentLine = br.readLine()) != null) {
                 String[] parts = sCurrentLine.split(": ");
                 settingsMap.put(parts[0], parts[1]);
@@ -47,6 +48,7 @@ public class SettingData {
                 ex.printStackTrace();
             }
         }
+        // set the static privates according to the map.
         String order = settingsMap.get("first player");
         if (order.equals("Player 1")) {
         	firstPlayer = 1;
@@ -68,7 +70,7 @@ public class SettingData {
 	 * function name: getBoardSize
 	 * input: void
 	 * output: int
-	 * operation: the functiom get BoardSize
+	 * operation: return BoardSize
 	 */
 	public static int getBoardSize() {
 		return boardSize;
@@ -76,8 +78,8 @@ public class SettingData {
 	/**
 	 * function name: getPlayer1Color
 	 * input: void
-	 * output: color
-	 * operation: the functiom get Player1 Color
+	 * output: Color
+	 * operation: return Player1 Color
 	 */
 	public static Color getPlayer1Color() {
 		return player1Color;
@@ -85,8 +87,8 @@ public class SettingData {
 	/**
 	 * function name: getPlayer2Color
 	 * input: void
-	 * output: color
-	 * operation: the functiom get Player2 Color
+	 * output: Color
+	 * operation: return Player2 Color
 	 */
 	public static Color getPlayer2Color() {
 		return player2Color;
@@ -95,7 +97,7 @@ public class SettingData {
 	 * function name: getFirstPlayer
 	 * input: void
 	 * output: int
-	 * operation: the functiom get First Player
+	 * operation: return the first Player's order
 	 */
 	public static int getFirstPlayer() {
 		return firstPlayer;

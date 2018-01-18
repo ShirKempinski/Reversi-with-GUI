@@ -219,6 +219,4 @@ public class GameLogic {
 	public void updateTurns() {
 		this.turns++;
 	}
-
-
 }

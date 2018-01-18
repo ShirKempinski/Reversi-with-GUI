@@ -9,7 +9,7 @@ public class SquareListener {
 	
 	/**
 	 * function name: SquareListener
-	 * input: ReversiController controller
+	 * input: ReversiController
 	 * output: new object of SquareListener
 	 * operation: constructor
 	 */
@@ -22,7 +22,7 @@ public class SquareListener {
 	 * function name: clickEvent
 	 * input: Square s
 	 * output: void
-	 * operation: The function runs the game again after the player selects his or her move.
+	 * operation: executes the user's mouseClick via playOneTurn()
 	 */
 	public void clickEvent(Square s) {
 		rc.playOneTurn(s);
@@ -32,7 +32,7 @@ public class SquareListener {
 	 * function name: hoverEvent
 	 * input: GUISquare s
 	 * output: void
-	 * operation: The function hover hevnt.
+	 * operation: notify the GUISquare that it has been hovered on
 	 */
 	public void hoverEvent(GUISquare s) {
 		s.setHover();

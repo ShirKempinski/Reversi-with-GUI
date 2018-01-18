@@ -42,7 +42,7 @@ public class SettingsController {
 	 * function name: initialize
 	 * input: void
 	 * output: void
-	 * operation: The function edits the screen of the settings window.
+	 * operation: initialize the window of the settings.
 	 */
 	@FXML
 	private void initialize() {
@@ -63,8 +63,7 @@ public class SettingsController {
 	 * function name: end
 	 * input: void
 	 * output: void
-	 * operation: The function saves the settings that the player has selected within
-	 * a file and returns to the main menu when done
+	 * operation: save the settings the player has selected to a file and then returns to main menu
 	 */
 	@FXML
 	protected void end() {
@@ -74,7 +73,6 @@ public class SettingsController {
 		String StringBoardSize = boardSize.getValue().toString();
 
 		Writer writer = null;
-
 		try {
 			writer = new BufferedWriter(new OutputStreamWriter(
 					new FileOutputStream("filename.txt"), "utf-8"));
@@ -82,22 +80,20 @@ public class SettingsController {
 			writer.write("color player1: " + StringPlayer1Color + "\n");
 			writer.write("color player2: " + StringPlayer2Color + "\n");
 			writer.write("board size: " + StringBoardSize + "\n");
-
 		} catch (IOException ex) {
-
+			ex.printStackTrace();			
 		} finally {
 			try {
 				writer.close();
-			} catch (Exception ex) {/*ignore*/}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
 		}
-
 		Menu menu = new Menu();
 		try {
 			menu.start((Stage)ok.getScene().getWindow());
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
-
 	}
-
 }

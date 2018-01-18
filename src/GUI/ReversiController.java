@@ -18,31 +18,31 @@ import reversiGame.Square;
 public class ReversiController implements Initializable {
 	@FXML
 	private HBox root;
-	
+
 	@FXML
 	private Text scoresPlayer1;
-	
+
 	@FXML
 	private Text scores1Value;
-	
+
 	@FXML
 	private Text scoresPlayer2;
-	
+
 	@FXML
 	private Text scores2Value;
-	
+
 	@FXML
 	private Text current;
-	
+
 	@FXML
 	private Text currentValue;
-	
+
 	@FXML
 	private Text message;
-	
+
 	@FXML
 	private Button backToMain;
-	
+
 	private ReversiBoard reversiBoard;
 	private Board board;
 	private Player player1;
@@ -56,7 +56,7 @@ public class ReversiController implements Initializable {
 	/**
 	 * function name: ReversiController
 	 * input: void
-	 * output: void
+	 * output: a new ReversiController object
 	 * operation: constructor
 	 */
 	public ReversiController() {
@@ -74,12 +74,12 @@ public class ReversiController implements Initializable {
 		this.board = new Board(SettingData.getBoardSize());
 		this.logic = new GameLogic(this.board);
 	}
-	
+
 	/**
 	 * function name:initialize
 	 * input: void
 	 * output: URL location, ResourceBundle resources
-	 * operation: The function edits the screen of the settings window
+	 * operation: initialize the window of the game
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -92,7 +92,7 @@ public class ReversiController implements Initializable {
 		current.setText("Current player:");
 		currentValue.setText(currentPlayer.toString());
 		message.setText("");
-		
+
 		// initialize the reversiBoard
 		this.reversiBoard.setPrefWidth(400);
 		this.reversiBoard.setPrefHeight(400);
@@ -110,12 +110,12 @@ public class ReversiController implements Initializable {
 			reversiBoard.draw(this.logic.getPossibleMoves(currentPlayer, opponentPlayer));
 		});
 	}
-	
+
 	/**
 	 * function name:playOneTurn
 	 * input: void
 	 * output: Square move
-	 * operation: The function play One Turn.    
+	 * operation: react to any mouse click of any of the cells in ReversiBoard    
 	 */
 	public void playOneTurn(Square move) {
 		// validate the move
@@ -123,14 +123,14 @@ public class ReversiController implements Initializable {
 			message.setText("");
 			this.logic.turnDisks(currentPlayer, opponentPlayer, move);
 			updatePlayers();
-		// if the move is illegal
+			// if the move is illegal
 		} else {
 			message.setText("Illegal Move!");
 		}
 		// if the game is over
 		if (this.logic.gameShouldStop(currentPlayer, opponentPlayer)) {
 			gameOver();
-		// if this player has no possible moves
+			// if this player has no possible moves
 		} else if (this.logic.getPossibleMoves(this.currentPlayer, this.opponentPlayer).isEmpty()) {
 			message.setText("No possible moves.\nThe turn passes back\nto the other player.");
 			updatePlayers();
@@ -138,8 +138,8 @@ public class ReversiController implements Initializable {
 		// draw the board
 		this.reversiBoard.draw(this.logic.getPossibleMoves(currentPlayer, opponentPlayer));		
 	}
-	
-	
+
+
 	/**
 	 * function name: isValidMove
 	 * input: Square move
@@ -149,7 +149,7 @@ public class ReversiController implements Initializable {
 	public boolean isValidMove(Square move) {
 		return this.logic.isPossibleMove(move.getX(), move.getY(), this.currentPlayer, this.opponentPlayer);
 	}
-	
+
 	/**
 	 * function name: gameOver
 	 * input: void
@@ -167,11 +167,11 @@ public class ReversiController implements Initializable {
 			message.setText("Game Over!\n" + "I'ts a Tie");
 		}
 	}
-	
+
 	/**
 	 * function name: updatePlayers
 	 * input: void
-	 * output:  void
+	 * output: void
 	 * operation: update the scores of the players and the players' turns.
 	 */
 	public void updatePlayers() {
@@ -179,27 +179,27 @@ public class ReversiController implements Initializable {
 		Player tmp = this.currentPlayer;
 		this.currentPlayer = this.opponentPlayer;
 		this.opponentPlayer = tmp;
-				
+
 		// update the scores
 		int score = this.board.getScore(this.player1.getType());
-        this.scores1Value.setText(""+score);
-        score = this.board.getScore(this.player2.getType());
-        this.scores2Value.setText(""+score);
+		this.scores1Value.setText(""+score);
+		score = this.board.getScore(this.player2.getType());
+		this.scores2Value.setText(""+score);
 		currentValue.setText(currentPlayer.toString());
 	}
-	
+
 	/**
 	 * function name: backToMain
 	 * input: void
 	 * output: void
 	 * operation: close the current window and go back to menu
 	 */
-   	 public void backToMain() {
-        	Menu menu = new Menu();
-        	try {
-            	menu.start((Stage) backToMain.getScene().getWindow());
-       		 } catch (Exception e) {
-        	    e.printStackTrace();
-        	}
-    	}
+	public void backToMain() {
+		Menu menu = new Menu();
+		try {
+			menu.start((Stage) backToMain.getScene().getWindow());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

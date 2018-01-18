@@ -129,7 +129,7 @@ public class Board {
 	 * function name: getScore
 	 * input: char type
 	 * output: int
-	 * operation: returns the number of times the given type occors in the board
+	 * operation: returns the number of times the given type occurs in the board
 	 */
 	public int getScore(char type) {
 		int score = 0;
