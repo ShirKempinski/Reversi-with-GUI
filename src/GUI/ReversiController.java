@@ -97,17 +97,17 @@ public class ReversiController implements Initializable {
 		this.reversiBoard.setPrefWidth(400);
 		this.reversiBoard.setPrefHeight(400);
 		this.root.getChildren().add(0, reversiBoard);
-		this.reversiBoard.draw();
+		this.reversiBoard.draw(this.logic.getPossibleMoves(currentPlayer, opponentPlayer));
 
 		// handle Windows resize
 		this.root.widthProperty().addListener((observable, oldValue, newValue) -> {
 			double boardNewWidth = newValue.doubleValue() -	120;
 			reversiBoard.setPrefWidth(boardNewWidth);
-			reversiBoard.draw();
+			reversiBoard.draw(this.logic.getPossibleMoves(currentPlayer, opponentPlayer));
 		});
 		this.root.heightProperty().addListener((observable, oldValue, newValue) -> {
 			reversiBoard.setPrefHeight(newValue.doubleValue());
-			reversiBoard.draw();
+			reversiBoard.draw(this.logic.getPossibleMoves(currentPlayer, opponentPlayer));
 		});
 	}
 	
@@ -136,7 +136,7 @@ public class ReversiController implements Initializable {
 			updatePlayers();
 		}
 		// draw the board
-		this.reversiBoard.draw();		
+		this.reversiBoard.draw(this.logic.getPossibleMoves(currentPlayer, opponentPlayer));		
 	}
 	
 	

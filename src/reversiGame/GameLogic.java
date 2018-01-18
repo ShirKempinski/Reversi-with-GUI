@@ -2,11 +2,7 @@ package reversiGame;
 
 import java.util.ArrayList;
 
-import reversiGame.Board.Winner;
-
 public class GameLogic {
-	public enum GameOver {NoMoreMoves, FullBoard};
-
 	private	Board board;
 	private	int turns;
 
@@ -39,7 +35,7 @@ public class GameLogic {
 				}
 				// if it's a valid move, push it in the vector
 				if (isPossibleMove(i, j, current, opponent)) {
-					moves.add(new Square(i+1, j+1));
+					moves.add(new Square(i, j));
 				}
 			}
 		}
@@ -150,10 +146,6 @@ public class GameLogic {
 		int x = move.getX();
 		int y = move.getY();
 		
-		
-		this.board.print();
-		
-		
 		// check upper left
 		if (flipInRightDirection(current, opponent, x-1, y-1, -1, -1, 0)) {
 			this.board.setType(x, y, current.getType());
@@ -186,56 +178,6 @@ public class GameLogic {
 		if (flipInRightDirection(current, opponent, x+1, y+1, 1, 1, 0)) {
 			this.board.setType(x, y, current.getType());
 		}
-
-		
-		this.board.print();
-		
-
-	}
-
-
-	/**
-	 * function name: printPossibleMoves
-	 * input: ArrayLisy<Square>
-	 * output: void
-	 * operation: prints out the moves
-	 */
-	public void printPossibleMoves(ArrayList<Square> moves) {
-		System.out.print("Your possible moves are: ");
-		int size = moves.size();
-		for (int i = 0; i < size; i++) {
-			if (i != 0) {
-				System.out.print(",");
-			}
-			moves.get(i).print();
-		}
-		System.out.println();
-	}
-
-	/**
-	 * function name: playOneTurn
-	 * input: 2 players
-	 * output: void
-	 * operation: prints out the board, get the player's next move and operates it
-	 */
-	public void playOneTurn(Player current, Player opponent) {
-		this.board.print();
-		System.out.print(current.getType() + ": It's youre move. ");
-		// check if there are possible moves
-		ArrayList<Square> moves = getPossibleMoves(current, opponent);
-		if (moves.isEmpty()) {
-			System.out.println();
-			System.out.println("No possible moves. The turn passes back to the other player.");
-			this.turns++;
-			return;
-		}
-		// print the moves to the current player
-		printPossibleMoves(moves);
-		// get the player's next move
-		Square nextMove = current.chooseSquare(moves);
-		// make the move
-		turnDisks(current, opponent, nextMove);
-	
 	}
 
 
@@ -247,26 +189,12 @@ public class GameLogic {
 	 */
 	public boolean gameShouldStop(Player X, Player O) {
 		if (getPossibleMoves(X,O).isEmpty() && getPossibleMoves(O,X).isEmpty()) {
-			printBoard();
-			System.out.println();
-			System.out.println("No more possible moves for both players.");
 			return true;
 		}
 		if (this.board.isboardfull()) {
-			printBoard();
 			return true;
 		}
 		return false;
-	}
-
-	/**
-	 * function name: printBoard
-	 * input: void
-	 * output: void
-	 * operation: prints out the board.
-	 */
-	private void printBoard() {
-		this.board.print();
 	}
 
 	/**
@@ -283,18 +211,6 @@ public class GameLogic {
 	}
 
 	/**
-	 * function name: gameStopped
-	 * input: 2 players
-	 * output: GameOver
-	 * operation: returns the reason for the end of the game.
-	 */
-	public GameOver gameStopped(Player X, Player O) {
-		if (this.board.isboardfull()) {
-			return GameOver.FullBoard;
-		} return GameOver.NoMoreMoves;
-	}
-
-	/**
 	 * function name: updateTurns
 	 * input: void
 	 * output: void
@@ -304,22 +220,5 @@ public class GameLogic {
 		this.turns++;
 	}
 
-//	/**
-//	 * function name: endGame
-//	 * input: void
-//	 * output: void
-//	 * operation: prints out the game result
-//	 */
-//	public void endGame() {
-//		System.out.println();
-//		System.out.print("Game is over.");
-//		Winner result = this.board.whoWin();
-//		if (result == Winner.O) {
-//			System.out.println(" O wins.");
-//		} else if (result == Winner.X) {
-//			System.out.println(" X wins.");
-//		} else {
-//			System.out.println(" No one wins - it's a tie.");
-//		}
-//	}
+
 }

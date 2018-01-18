@@ -3,8 +3,7 @@ package reversiGame;
 import java.util.ArrayList;
 
 public class Board {
-	public enum Winner {X, O, tie}
-
+	
 	private	int size;
 	private	ArrayList<ArrayList<Square>> array;
 
@@ -29,53 +28,6 @@ public class Board {
 		this.array.get(this.size/2).get(this.size/2).setType('O');
 		this.array.get(this.size/2 -1).get(this.size/2).setType('X');
 		this.array.get(this.size/2).get(this.size/2 -1).setType('X');
-	}
-
-	/**
-	 * function name: drawLine
-	 * input: void
-	 * output: void
-	 * operation: draws the separate line in the board.
-	 */
-	private void drawLine() {
-		for (int i = 0; i < this.size * 4 + 2; i++) {
-			System.out.print("-");
-		}
-		System.out.println();
-	}
-
-
-	/**
-	 * function name: print
-	 * input: void
-	 * output: void
-	 * operation: print out the board
-	 */
-	public void print() {
-		System.out.println();
-		for (int i = 0; i < this.size + 1; i++) {
-			for (int j = 0; j < this.size + 1; j++) {
-				if (i == 0) {
-					if (j == 0) {
-						continue;
-					}
-					System.out.print(" | " + j);
-					if (j == this.size) {
-						System.out.println(" |");
-						drawLine();
-						continue;
-					}
-				} else if (j == 0) {
-					System.out.print(i + "|");
-				} else {
-					System.out.print(" " + this.array.get(i-1).get(j-1).getType() + " |");
-				}
-				if (j == this.size) {
-					System.out.println();
-					drawLine();
-				}
-			}
-		}
 	}
 
 	/**
@@ -158,9 +110,9 @@ public class Board {
 	 * output: int
 	 * operation: returns the board's size
 	 */
-		public int getSize() {
-			return this.size;
-		}
+	public int getSize() {
+		return this.size;
+	}
 
 
 	/**
@@ -179,23 +131,23 @@ public class Board {
 	 * output: int
 	 * operation: returns the number of times the given type occors in the board
 	 */
-		public int getScore(char type) {
-			int score = 0;
-			for (int i = 0; i < this.size; i++) {
-				for (int j = 0; j < this.size; j++) {
-					if (this.array.get(i).get(j).getType() == type){
-						score++;
-					}
+	public int getScore(char type) {
+		int score = 0;
+		for (int i = 0; i < this.size; i++) {
+			for (int j = 0; j < this.size; j++) {
+				if (this.array.get(i).get(j).getType() == type){
+					score++;
 				}
 			}
-			return score;
 		}
+		return score;
+	}
 	/**
 	 * function name: whoWin
 	 * input: void
 	 * output: Winner
-   	 * operation: checks who won - X, O or it's a tie.
-   	 */
+	 * operation: checks who won - X, O or it's a tie.
+	 */
 	public String whoWin() {
 		int x = 0;
 		int o = 0;

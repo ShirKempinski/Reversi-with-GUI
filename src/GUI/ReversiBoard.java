@@ -1,8 +1,11 @@
 package GUI;
 
+import java.util.ArrayList;
+
 import javafx.scene.layout.GridPane;
 
 import reversiGame.Board;
+import reversiGame.Square;
 
 public class ReversiBoard extends GridPane {
 	private Board board;
@@ -16,24 +19,22 @@ public class ReversiBoard extends GridPane {
 		this.boardSize = this.board.getSize();
 		this.listener = l;
 
-		int squareEdge = (int) this.getHeight() / this.boardSize;
 		this.squares = new GUISquare[boardSize][boardSize];
 		for (int i = 0; i < boardSize; i++) {
 			for (int j = 0; j < boardSize; j++) {
 				this.squares[i][j] = new GUISquare(this, this.board.getSquare(i, j), this.listener);
-//				s.setFill(Color.rgb(200, 162, 200));
 			}
 		}
 	}
 
-	public void draw() {
+	public void draw(ArrayList<Square> possibleMoves) {
 		// clear all that was on screen
 		this.getChildren().clear();
 		int squareSize = (int) this.getPrefHeight() / this.boardSize;
 		// go over the squares
 		for (int i = 0; i <  this.boardSize; i++) {
 			for (int j = 0; j <  this.boardSize; j++) {
-					this.squares[i][j].draw(squareSize);
+					this.squares[i][j].draw(squareSize, possibleMoves);
 			}
 		}
 	}

@@ -32,7 +32,7 @@ public class SettingsController {
 			FXCollections.observableArrayList("Player 1", "Player 2");
 
 	ObservableList<String> colorPlayerList =
-			FXCollections.observableArrayList("Black", "White", "purple", "Blue", "Green", "Yellow", "orange",
+			FXCollections.observableArrayList("Black", "White", "Purple", "Blue", "Green", "Yellow", "Orange",
 					"Red");
 
 	ObservableList<String> boardSizeList =
@@ -52,7 +52,7 @@ public class SettingsController {
 		colorPlayer1.setValue("Black");
 		colorPlayer1.setItems(colorPlayerList);
 
-		colorPlayer2.setValue("White");
+		colorPlayer2.setValue("Purple");
 		colorPlayer2.setItems(colorPlayerList);
 
 		boardSize.setValue("8");
