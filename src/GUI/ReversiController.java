@@ -53,7 +53,12 @@ public class ReversiController implements Initializable {
 	private Color color2;
 	private GameLogic logic;
 
-	
+	/**
+	 * function name: ReversiController
+	 * input: void
+	 * output: void
+	 * operation: constructor
+	 */
 	public ReversiController() {
 		this.player1 = new Player('X');
 		this.player2 = new Player('O');
@@ -70,6 +75,12 @@ public class ReversiController implements Initializable {
 		this.logic = new GameLogic(this.board);
 	}
 	
+	/**
+	 * function name:initialize
+	 * input: void
+	 * output: URL location, ResourceBundle resources
+	 * operation: The function edits the screen of the settings window
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// initialize fxml privates
@@ -100,6 +111,12 @@ public class ReversiController implements Initializable {
 		});
 	}
 	
+	/**
+	 * function name:playOneTurn
+	 * input: void
+	 * output: Square move
+	 * operation: The function play One Turn.    
+	 */
 	public void playOneTurn(Square move) {
 		// validate the move
 		if (isValidMove(move)) {

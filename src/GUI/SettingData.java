@@ -14,7 +14,14 @@ public class SettingData {
 	private static Color player1Color;
 	private static Color player2Color;
 	private static int firstPlayer;
-		
+	
+	
+	/**
+	 * function name: readSettingsFromFile
+	 * input: void
+	 * output: void
+	 * operation: the function read settings data from file.
+	 */
 	public static void readSettingsFromFile() {
         String fileName = "filename.txt";
         FileReader fr = null;
@@ -57,19 +64,39 @@ public class SettingData {
         String[] sizeParts = size.split("x");
         boardSize = Integer.parseInt(sizeParts[0]);
     }
-	
+	/**
+	 * function name: getBoardSize
+	 * input: void
+	 * output: int
+	 * operation: the functiom get BoardSize
+	 */
 	public static int getBoardSize() {
 		return boardSize;
 	}
-
+	/**
+	 * function name: getPlayer1Color
+	 * input: void
+	 * output: color
+	 * operation: the functiom get Player1 Color
+	 */
 	public static Color getPlayer1Color() {
 		return player1Color;
 	}
-	
+	/**
+	 * function name: getPlayer2Color
+	 * input: void
+	 * output: color
+	 * operation: the functiom get Player2 Color
+	 */
 	public static Color getPlayer2Color() {
 		return player2Color;
 	}
-	
+	/**
+	 * function name: getFirstPlayer
+	 * input: void
+	 * output: int
+	 * operation: the functiom get First Player
+	 */
 	public static int getFirstPlayer() {
 		return firstPlayer;
 	}

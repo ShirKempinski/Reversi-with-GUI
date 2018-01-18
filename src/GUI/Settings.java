@@ -8,6 +8,12 @@ import javafx.stage.Stage;
 
 public class Settings extends Application {
 
+    /**
+	 * function name: start
+	 * input: Stage primaryStage
+	 * output: void
+	 * operation: The function starts to run a new game screen.
+	 */
     public void start(Stage primaryStage) {
         try {
             GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("Settings.fxml"));
@@ -20,6 +26,13 @@ public class Settings extends Application {
             e.printStackTrace();
         }
     }
+    
+    /**
+	 * function name: main
+	 * input: String[] args
+	 * output: void
+	 * operation: The function starts to run a settings screen.
+	 */
     public static void main(String[] args) {
         launch(args);
     }

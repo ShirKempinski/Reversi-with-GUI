@@ -38,7 +38,12 @@ public class SettingsController {
 	ObservableList<String> boardSizeList =
 			FXCollections.observableArrayList("4", "6", "8", "10", "12", "14", "16", "18", "20");
 
-
+	/**
+	 * function name: initialize
+	 * input: void
+	 * output: void
+	 * operation: The function edits the screen of the settings window.
+	 */
 	@FXML
 	private void initialize() {
 		firstPlayer.setValue("Player 1");
@@ -54,6 +59,13 @@ public class SettingsController {
 		boardSize.setItems(boardSizeList);
 	}
 
+	/**
+	 * function name: end
+	 * input: void
+	 * output: void
+	 * operation: The function saves the settings that the player has selected within
+	 * a file and returns to the main menu when done
+	 */
 	@FXML
 	protected void end() {
 		String StringfirstPlayer = firstPlayer.getValue().toString();
