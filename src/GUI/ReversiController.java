@@ -129,22 +129,12 @@ public class ReversiController implements Initializable {
 		}
 		// if the game is over
 		if (this.logic.gameShouldStop(currentPlayer, opponentPlayer)) {
-			int score1 = this.board.getScore(this.player1.getType());
-			int score2 = this.board.getScore(this.player2.getType());
-			if (score1 > score2) {
-				message.setText("Game Over\n" + "Player 1 win");
-			} else if (score2 > score1) {
-				message.setText("Game Over\n" + "Player 2 win");
-			} else {
-				message.setText("Game Over\n" + "I'ts a Tie");
-			}
-			
+			gameOver();
 		// if this player has no possible moves
 		} else if (this.logic.getPossibleMoves(this.currentPlayer, this.opponentPlayer).isEmpty()) {
 			message.setText("No possible moves.\nThe turn passes back\nto the other player.");
 			updatePlayers();
 		}
-		
 		// draw the board
 		this.reversiBoard.draw();		
 	}
@@ -154,18 +144,35 @@ public class ReversiController implements Initializable {
 	 * function name: isValidMove
 	 * input: Square move
 	 * output:  boolean
-	 * operation: The function returns true or false if the move the player has played is valid.
+	 * operation: validate the given move with the private gameLogic.
 	 */
 	public boolean isValidMove(Square move) {
 		return this.logic.isPossibleMove(move.getX(), move.getY(), this.currentPlayer, this.opponentPlayer);
 	}
 	
+	/**
+	 * function name: gameOver
+	 * input: void
+	 * output: void
+	 * operation: set the gameOver message.
+	 */
+	public void gameOver() {
+		int score1 = this.board.getScore(this.player1.getType());
+		int score2 = this.board.getScore(this.player2.getType());
+		if (score1 > score2) {
+			message.setText("Game Over!\n" + "Player 1 win");
+		} else if (score2 > score1) {
+			message.setText("Game Over!\n" + "Player 2 win");
+		} else {
+			message.setText("Game Over!\n" + "I'ts a Tie");
+		}
+	}
 	
 	/**
 	 * function name: updatePlayers
 	 * input: void
 	 * output:  void
-	 * operation: The function updates the scores of the players and the player whose turn is to play.
+	 * operation: update the scores of the players and the players' turns.
 	 */
 	public void updatePlayers() {
 		// update the turns
@@ -184,8 +191,8 @@ public class ReversiController implements Initializable {
 	/**
 	 * function name: backToMain
 	 * input: void
-	 * output:  void
-	 * operation: The function back To Menu
+	 * output: void
+	 * operation: close the current window and go back to menu
 	 */
    	 public void backToMain() {
         	Menu menu = new Menu();
