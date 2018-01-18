@@ -106,19 +106,18 @@ public class ReversiController implements Initializable {
 			message.setText("");
 			this.logic.turnDisks(currentPlayer, opponentPlayer, move);
 			updatePlayers();
+		// if the move is illegal
+		} else {
+			message.setText("Illegal Move!");
 		}
 		// if the game is over
 		if (this.logic.gameShouldStop(currentPlayer, opponentPlayer)) {
-			message.setText("Game Over");
+			message.setText("Game Over\n" + "The Winner is: " + this.board.whoWin());
 			
 		// if this player has no possible moves
 		} else if (this.logic.getPossibleMoves(this.currentPlayer, this.opponentPlayer).isEmpty()) {
 			message.setText("No possible moves. The turn passes back to the other player.");
 			updatePlayers();
-				
-		// if this move is invalid
-		} else if (!isValidMove(move)) {
-			message.setText("Illeagal Move!");
 		}
 		
 		// draw the board
