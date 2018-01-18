@@ -129,7 +129,15 @@ public class ReversiController implements Initializable {
 		}
 		// if the game is over
 		if (this.logic.gameShouldStop(currentPlayer, opponentPlayer)) {
-			message.setText("Game Over\n" + "The Winner is:\n" + this.board.whoWin());
+			int score1 = this.board.getScore(this.player1.getType());
+			int score2 = this.board.getScore(this.player2.getType());
+			if (score1 > score2) {
+				message.setText("Game Over\n" + "Player 1 win");
+			} else if (score2 > score1) {
+				message.setText("Game Over\n" + "Player 2 win");
+			} else {
+				message.setText("Game Over\n" + "I'ts a Tie");
+			}
 			
 		// if this player has no possible moves
 		} else if (this.logic.getPossibleMoves(this.currentPlayer, this.opponentPlayer).isEmpty()) {
