@@ -112,11 +112,11 @@ public class ReversiController implements Initializable {
 		}
 		// if the game is over
 		if (this.logic.gameShouldStop(currentPlayer, opponentPlayer)) {
-			message.setText("Game Over\n" + "The Winner is: " + this.board.whoWin());
+			message.setText("Game Over\n" + "The Winner is:\n" + this.board.whoWin());
 			
 		// if this player has no possible moves
 		} else if (this.logic.getPossibleMoves(this.currentPlayer, this.opponentPlayer).isEmpty()) {
-			message.setText("No possible moves. The turn passes back to the other player.");
+			message.setText("No possible moves.\nThe turn passes back\nto the other player.");
 			updatePlayers();
 		}
 		
